@@ -183,7 +183,7 @@ for e=1:ne
 
     % compute force matrix, minus sign to print the reaction forces
     elforce = elstress.*A;
-    force(e) = -elforce;
+    force(e) = elforce;
 end
 return
 
