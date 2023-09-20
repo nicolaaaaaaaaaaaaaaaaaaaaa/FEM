@@ -33,7 +33,7 @@ C = [];                                 % Compliance
 i = [];                                 % Iteration
 
 
-V_con = 11.5;
+V_con = 11.5; % V_con = 11.5 ideal for input file for connected and connected_modified
 rho_min = 10^-6;
 max_iopt = 100;
 p = 1.5;
@@ -65,9 +65,9 @@ for iopt = 1:max_iopt
     %PlotStructure(X,IX,ne,neqn,bound,loads,D,stress)
 end
 
-[optimal]=optimality(mprop,X,IX,D,ne,v,rho,p,lambmid);
-disp('rho')
-disp(rho)
+[optimal]=optimality(mprop,X,IX,D,ne,v,rho,p,lambmid)
+%disp('rho')
+%disp(rho)
 
 i = 1:length(C);
 
