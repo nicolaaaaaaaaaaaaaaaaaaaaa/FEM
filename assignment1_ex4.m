@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                        Basis truss program                              %
+%                 Exercise 4 - Topology optimization                      %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function fea()
@@ -8,17 +8,9 @@ close all
 clc
 
 tic
+
 %--- Input files ----------------------------------------------------------%
-%nodes3by4 
-%nodes3by4_all
-%nodes5by4 
-%nodes5by4_all
-%nodes9by7
 nodes9by7_all
-%nodes17by13
-%nodes17by13_all
-%nodes33by13
-%nodes33by13_all
 
 neqn = size(X,1)*size(X,2);         % Number of equations
 ne = size(IX,1);                    % Number of elements
@@ -30,13 +22,12 @@ D=zeros(neqn,1);                        % Displacement vector
 R=zeros(neqn,1);                        % Residual vector
 strain=zeros(ne,1);                     % Element strain vector
 stress=zeros(ne,1);                     % Element stress vector
-force = zeros(ne,1); 
+force = zeros(ne,1);                    % Element force vector
 v = zeros(ne,1);                        % Element volume vector
 rho = zeros(ne,1);                      % Element density vector
-rho_new = zeros(ne,1);                   % New element density vector
+rho_new = zeros(ne,1);                  % New element density vector
 fp=zeros(ne,1);                         % Gradient f
 gp=zeros(ne,1);                         % Gradient g
-optimal = zeros(ne,1);
 C = [];                                 % Compliance
 i = [];                                 % Iteration
 
@@ -52,7 +43,7 @@ eta = 0.99;
 
 [P]=buildload(P,loads);                     % global load vector
 
-[v] = buildvolume(X, IX, mprop, v, V_con, ne); % volume vector
+[v] = buildvolume(X, IX, mprop, v, V_con, ne);  % volume vector
 rho = ones(ne,1)*V_con./sum(v);
 
 for iopt = 1:max_iopt
@@ -66,41 +57,24 @@ for iopt = 1:max_iopt
         break
     end
 
-    f = D'*Kmatr*D;
+    f = D'*Kmatr*D;                          % compute compliance 
     rho = rho_new;
     C = [C,f];
-
-    %PlotStructure(X,IX,ne,neqn,bound,loads,D,stress)
 end
-
-[optimal]=optimality(mprop,X,IX,D,ne,v,rho,p,lambmid);
-
-num=loads(1,1)*2;
-
-%disp('D')
-%disp(D(num))
-
-disp('p')
-disp(p)
-
-disp('C')
-disp(C(end))
-
 
 i = 1:length(C);
 
 figure
 plot(i,C)
 
-
 %--- Plot results --------------------------------------------------------%                                                        
 figure
+
 PlotStructure(X,IX,ne,neqn,bound,loads,D,stress,rho,rho_min)        % Plot structure
 
 toc
 
 return
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Build global load vector %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -126,9 +100,11 @@ end
 return 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Build density vector %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Build volume  vector %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function [v] = buildvolume(X, IX, mprop, v, ~, ne)
+
+% This subroutine builds the volume vector
 
 for e=1:ne
 
@@ -192,6 +168,7 @@ return
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Enforce boundary conditions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [Kmatr,P]=enforce(Kmatr,P,bound)
 
 % This subroutine enforces the support boundary conditions
@@ -210,10 +187,12 @@ for i=1:size(bound,1)
     P(dof) = 0;
 
 end
-return
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+return
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Calculate element strain and stress %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [strain,stress,force,fp,gp]=recover(mprop,X,IX,D,ne,strain,stress,force,v,rho,p,fp,gp)
 
 % This subroutine recovers the element stress, element strain, 
@@ -263,44 +242,7 @@ for e=1:ne
     % compute force matrix, minus sign to print the reaction forces
     elforce = elstress.*A;
     force(e) = elforce;
-end
 
-
-return
-
-
-%%% Check optimum condition %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [optimal]=optimality(mprop,X,IX,D,ne,v,rho,p,lambmid)
-
-        
-for e=1:ne
-
-    % compute undeformed lenght
-    delx = X(IX(e,2),1) - X(IX(e,1),1);
-    dely = X(IX(e,2),2) - X(IX(e,1),2);
-    L0 = sqrt(delx^2 + dely^2);
-
-    % compute linear displacement vector
-    [Bo] = (1/L0^2).*[-delx -dely delx dely]';
-
-    % compute E and A
-    propno = IX(e, 3);
-    E = mprop(propno,1);
-    A = mprop(propno,2);
-
-    % compute element stiffness matrix
-    [ke0] = E.*A.*L0.*Bo*Bo';
-
-    % compute displacement vector
-    ui = D(IX(e,1).*2 - 1);
-    vi = D(IX(e,1).*2);
-    uj = D(IX(e,2).*2 - 1);
-    vj = D(IX(e,2).*2);
-    d = [ui vi uj vj]';
-    
-    %optimale = p/lambmid*(d'*ke0*d)/(v(e)*rho(e));
-    optimale = p/lambmid*(d'*ke0*d)/(v(e)*rho(e));
-    optimal(e) = optimale;
 end
 
 return
@@ -309,6 +251,8 @@ return
 %%% Bisect function %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function [lambmid,rho_new] = Bisectfunction(eps,ne,rho,fp,gp,eta,v,V_con,rho_min,rho_new)
+
+% This subroutine that applies the bi-section method
 
 lamb1 = 10^-10;
 lamb2 = 10^10;
@@ -332,13 +276,15 @@ while (lamb2-lamb1)/(lamb1+lamb2) > eps
     else 
         lamb2 = lambmid;
     end
-end
-return
 
+end
+
+return
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Plot structure %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function PlotStructure(X,IX,ne,neqn,bound,loads,D,stress,rho, rho_min)
 
 % This subroutine plots the undeformed and deformed structure
