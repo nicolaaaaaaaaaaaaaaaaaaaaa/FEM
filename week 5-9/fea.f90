@@ -58,9 +58,6 @@ contains
         integer :: e
         real(wp), dimension(:), allocatable :: plotval
 
-        print*, 'loads matrix'
-        print*, transpose(loads)
-
         ! Build load-vector
         call buildload
 
@@ -99,8 +96,7 @@ contains
             if (element(e)%id == 1) then
                 plotval(e) = stress(e,1)
             else if (element(e)%id == 2) then
-                plotval(e) = 0
-                print *, 'WARNING in fea/displ: Plot value not set -- you need to add your own code here'
+                plotval(e) = stress(e,1)
             end if
         end do
         call plotmatlabeval('Stresses',plotval)
@@ -122,16 +118,19 @@ contains
 !        real(wp), dimension(mdim) :: xe
 !        real(wp), dimension(mdim) :: re
 
+        integer, dimension(1) :: dof
+
         ! Build load vector
         p(1:neqn) = 0
         do i = 1, np
             select case(int(loads(i, 1)))
             case( 1 )
             	! Build nodal load contribution
-                p(6) = -0.1_wp
-                print *, 'WARNING in fea/buildload: You need to replace hardcoded nodal load with your code'
+            	dof = loads(i, 2)*2-2+loads(i,3)
+                p(dof) = loads(i,4)
             case( 2 )
             	! Build uniformly distributed surface (pressure) load contribution
+
                 print *, 'ERROR in fea/buildload'
                 print *, 'Distributed loads not defined -- you need to add your own code here'
                 stop
@@ -154,7 +153,7 @@ contains
         use link1
         use plane42rect
 
-        integer :: e, i, j
+        integer :: e, i, j, k
         integer :: nen
 ! Hint for system matrix in band form:
 !        integer :: irow, icol
@@ -165,7 +164,7 @@ contains
 !        real(wp), dimension(mdim, mdim) :: me
         real(wp) :: young, area
 ! Hint for modal analysis and continuum elements:
-!        real(wp) :: nu, dens, thk
+        real(wp) :: nu, dens, thk
 
         ! Reset stiffness matrix
         if (.not. banded) then
@@ -180,6 +179,11 @@ contains
 
             ! Find coordinates and degrees of freedom
             nen = element(e)%numnode
+
+            do k = 1, ne
+                print*,element(k)
+            end do
+
             do i = 1, nen
                  xe(2*i-1) = x(element(e)%ix(i),1)
                  xe(2*i  ) = x(element(e)%ix(i),2)
@@ -194,9 +198,12 @@ contains
                  area  = mprop(element(e)%mat)%area
                  call link1_ke(xe, young, area, ke)
             case( 2 )
-                 print *, 'ERROR in fea/buildstiff:'
-                 print *, 'Stiffness matrix for plane42rect elements not implemented -- you need to add your own code here'
-                 stop
+                 young = mprop(element(e)%mat)%young
+                 nu  = mprop(element(e)%mat)%nu
+                 thk  = mprop(element(e)%mat)%thk
+
+                 call plane42rect_ke(xe, young, nu, thk, ke)
+
             end select
 
             ! Assemble into global matrix
@@ -269,7 +276,7 @@ contains
         real(wp), dimension(mdim, mdim) :: ke
         real(wp) :: young, area
 ! Hint for continuum elements:
-!        real(wp):: nu, dens, thk
+        real(wp):: nu, dens, thk
         real(wp), dimension(3) :: estrain, estress
 
         ! Reset force vector
@@ -299,8 +306,14 @@ contains
                 stress(e, 1:3) = estress
                 strain(e, 1:3) = estrain
             case( 2 )
-                print *, 'WARNING in fea/recover: Stress and strain not calculated for continuum' &
-                    // 'elements -- you need to add your own code here'
+                 young = mprop(element(e)%mat)%young
+                 nu  = mprop(element(e)%mat)%nu
+                 thk  = mprop(element(e)%mat)%thk
+                 call plane42rect_ke(xe, young, nu, thk, ke)
+                 p(edof(1:2*nen)) = p(edof(1:2*nen)) + matmul(ke(1:2*nen,1:2*nen), de(1:2*nen))
+                 call plane42rect_ss(xe, de, young, nu, estress, estrain)
+                 stress(e, 1:3) = estress
+                 strain(e, 1:3) = estrain
             end select
         end do
     end subroutine recover
