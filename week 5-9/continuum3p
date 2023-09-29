@@ -15,6 +15,8 @@ ET,1,PLANE42
 MP,EX,1,  1.00000000    
 MP,PRXY,1, 0.300000000    
 MP,DENS,1,  1.00000000    
+! Define element thickness
+R, 1, 17
 ! Define nodal coordinate: N, node #, x-coord, y-coord, z-coord
 N,       1,  0.00000000    ,  0.00000000    , 0.
 N,       2,  0.00000000    ,  2.00000000    , 0.
@@ -25,9 +27,9 @@ N,       6,  2.00000000    ,  4.00000000    , 0.
 N,       7,  4.00000000    ,  0.00000000    , 0.
 N,       8,  4.00000000    ,  2.00000000    , 0.
 N,       9,  4.00000000    ,  4.00000000    , 0.
-N,       7,  6.00000000    ,  0.00000000    , 0.
-N,       8,  6.00000000    ,  2.00000000    , 0.
-N,       9,  6.00000000    ,  4.00000000    , 0.
+N,      10,  6.00000000    ,  0.00000000    , 0.
+N,      11,  6.00000000    ,  2.00000000    , 0.
+N,      12,  6.00000000    ,  4.00000000    , 0.
 ! Define element connectivity: EN, element #, nodal list 
 EN,       1,       1,       4,       5,       2
 EN,       2,       2,       5,       6,       3
@@ -37,16 +39,15 @@ EN,       5,       7,       10,       11,       8
 EN,       6,       8,       11,       12,       9
 ! Define boundary support conditions: D, node #, dof label, value
 D,       1,UX,     0.000000000
-D,       1,UY,     0.000000000
 D,       2,UX,     0.000000000
 D,       2,UY,     0.000000000
 D,       3,UX,     0.000000000
-D,       3,UY,     0.000000000
 ! Define nodal load conditions: F, node #, dof label, value
-F,       10,FY,     -.00500000000
-F,       11,FY,     -.01000000000
-F,       12,FY,     -.00500000000
+F,       10,FX,     2.540000000
+F,       11,FX,     5.800000000
+F,       12,FX,     2.540000000
 ! Define surface load conditions: SFE, element #, face #, PRES, 0, value
-
+!SFE, 5, 2, PRES, 0, 15.0
+!SFE, 6, 2, PRES, 0, 15.0
 
 FINISH

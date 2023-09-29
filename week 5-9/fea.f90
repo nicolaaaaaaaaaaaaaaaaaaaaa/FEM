@@ -21,8 +21,7 @@ contains
         use plane42rect
 
 ! Hint for continuum elements:
-!        integer, parameter :: mdim = 8
-!        integer, dimension(mdim) :: edof
+
 
         ! This subroutine computes the number of global equation,
         ! half bandwidth, etc and allocates global arrays.
@@ -112,34 +111,68 @@ contains
         use fedata
         use plane42rect
 
-        integer :: i
-! Hint for continuum elements:
-!        integer, dimension(mdim) :: edof
-!        real(wp), dimension(mdim) :: xe
-!        real(wp), dimension(mdim) :: re
+        integer :: i,j, eface, l,m
+        ! Hint for continuum elements:
+        real(wp), dimension(mdim) :: xe
+        real(wp), dimension(mdim) :: re
+        integer, dimension(mdim) :: edof
+        real(wp) :: fe, thk
 
-        integer, dimension(1) :: dof
+        integer :: dof, en, nen
 
         ! Build load vector
         p(1:neqn) = 0
+
         do i = 1, np
             select case(int(loads(i, 1)))
             case( 1 )
             	! Build nodal load contribution
             	dof = loads(i, 2)*2-2+loads(i,3)
                 p(dof) = loads(i,4)
+
             case( 2 )
+
             	! Build uniformly distributed surface (pressure) load contribution
 
-                print *, 'ERROR in fea/buildload'
-                print *, 'Distributed loads not defined -- you need to add your own code here'
-                stop
+            	en = loads(i,2)
+                nen = element(en)%numnode
+            	eface = loads(i,3)
+            	fe = loads(i,4)
+            	thk = mprop(element(en)%mat)%thk
+
+
+
+            	! Find coordinates and degrees of freedom
+                do j = 1, nen
+                    xe(2*j-1) = x(element(en)%ix(j),1)
+                    xe(2*j  ) = x(element(en)%ix(j),2)
+                    edof(2*j-1) = 2 * element(en)%ix(j) - 1
+                    edof(2*j)   = 2 * element(en)%ix(j)
+                end do
+
+
+                call plane42rect_re(xe,eface, fe, thk, re)
+
+
+                do l = 1, size(re)
+                    p(edof(l)) = p(edof(l)) + re(l)
+                end do
+
+
+                !print*,'p'
+            	!print*, p
+
             case default
                 print *, 'ERROR in fea/buildload'
                 print *, 'Load type not known'
                 stop
             end select
         end do
+
+        do m = 1,size(p)
+            print*, m, p(m)
+        end do
+
     end subroutine buildload
 !
 !--------------------------------------------------------------------------------------------------
@@ -153,7 +186,7 @@ contains
         use link1
         use plane42rect
 
-        integer :: e, i, j, k
+        integer :: e, i, j, k, m
         integer :: nen
 ! Hint for system matrix in band form:
 !        integer :: irow, icol
@@ -179,10 +212,6 @@ contains
 
             ! Find coordinates and degrees of freedom
             nen = element(e)%numnode
-
-            do k = 1, ne
-                print*,element(k)
-            end do
 
             do i = 1, nen
                  xe(2*i-1) = x(element(e)%ix(i),1)
@@ -213,6 +242,12 @@ contains
                         kmat(edof(i), edof(j)) = kmat(edof(i), edof(j)) + ke(i, j)
                     end do
                 end do
+
+
+                !do m = 1, size(kmat, dim = 1)
+                !    print *, kmat(m,:)
+                !end do
+
 ! Hint: Can you eliminate the loops above by using a different Fortran array syntax?
             else
                 print *, 'ERROR in fea/buildstiff'

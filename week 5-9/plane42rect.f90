@@ -1,7 +1,7 @@
-module plane42rect 
+module plane42rect
 
-    !! This module contains subroutines specific to the plane42 element 
-    !!        
+    !! This module contains subroutines specific to the plane42 element
+    !!
     !! The plane42 element has 4 nodes. Each node has 2 degrees-of-freedom,
     !! namely, displacement along the \(x\)- and \(y\)-coordinate directions.
     !!
@@ -10,21 +10,21 @@ module plane42rect
     !! edge 1 is the edge between element node 1 and 2.
     !!
     !!       N4    E3    N3
-    !!          o------o 
+    !!          o------o
     !!          |      |
     !!       E4 |      | E2
     !!          |      |
     !!          o------o
     !!       N1    E1    N2
-    !!             
     !!
-    !! `N1` = element node 1, `N2` = element node 2, etc  
-    !! `E1` = element face 1, `E2` = element face 2, etc  
-    
+    !!
+    !! `N1` = element node 1, `N2` = element node 2, etc
+    !! `E1` = element face 1, `E2` = element face 2, etc
+
     use types
     implicit none
     save
-    
+
     private
     public :: plane42rect_ke, plane42rect_re, plane42rect_ss
 
@@ -60,6 +60,8 @@ contains
                         t57, t58, t59, t62, t66, t70, t74, t78, &
                         t82, t86, t90, t94, t98, t102, t106, t110
         real(wp) :: d11, d12, d13, d22, d23, d33
+
+        ke = 0
 
         aa = (xe(3)-xe(1))/2
         bb = (xe(8)-xe(2))/2
@@ -188,6 +190,7 @@ contains
         ke(8,8) = t106
 
         ke = ke*thk
+
     end subroutine plane42rect_ke
 !
 !--------------------------------------------------------------------------------------------------
@@ -225,26 +228,27 @@ contains
             nface(1,3) = aa
             nface(2,2) = aa
             nface(2,4) = aa
+            f(2) = -fe
         elseif (eface == 2) then
             nface(1,3) = bb
             nface(1,5) = bb
             nface(2,4) = bb
             nface(2,6) = bb
+            f(1) = fe
         elseif (eface == 3) then
             nface(1,5) = aa
             nface(1,7) = aa
             nface(2,6) = aa
             nface(2,8) = aa
+            f(2) = fe
         elseif (eface == 4) then
             nface(1,1) = bb
             nface(1,7) = bb
             nface(2,2) = bb
             nface(2,8) = bb
+            f(1) = -fe
         endif
         re = matmul(transpose(nface), f) * thk
-        print *, 'ERROR in plane42rect/plane42rect_re'
-        print *, 'subroutine incomplete -- you need to add some code in this subroutine'
-        stop
     end subroutine plane42rect_re
 !
 !--------------------------------------------------------------------------------------------------
@@ -256,7 +260,7 @@ contains
 
         real(wp), intent(in) :: young
             !! Young's Modulus for this element
-        real(wp), intent(in) :: nu 
+        real(wp), intent(in) :: nu
             !! Poisson's Ratio for this element
         real(wp), dimension(:), intent(in)  :: xe
             !! Nodal coordinates of this element in undeformed configuration (see also [[plane42rect_ke]])
@@ -278,7 +282,7 @@ contains
             !! * `estrain(1)` = \(\epsilon_{11}\)
             !! * `estrain(2)` = \(\epsilon_{22}\)
             !! * `estrain(3)` = \(\epsilon_{12}\)
-        real(wp) :: bmat(3, 8), cmat(3, 3) 
+        real(wp) :: bmat(3, 8), cmat(3, 3)
 
         ! Build strain-displacement matrix
         bmat = 0
