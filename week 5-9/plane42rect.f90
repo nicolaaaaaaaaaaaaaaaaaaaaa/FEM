@@ -282,23 +282,84 @@ contains
             !! * `estrain(1)` = \(\epsilon_{11}\)
             !! * `estrain(2)` = \(\epsilon_{22}\)
             !! * `estrain(3)` = \(\epsilon_{12}\)
-        real(wp) :: bmat(3, 8), cmat(3, 3)
+        real(wp) :: bmat(3, 8), cmat(3, 3), cmat2(3, 3)
+        real(wp) :: aa,bb,x,y,Emult,Emult2
+
+        aa = (xe(3)-xe(1))/2
+        bb = (xe(8)-xe(2))/2
+        x = 0
+        y = 0
 
         ! Build strain-displacement matrix
         bmat = 0
+        bmat(1,1) = -(bb-y)
+        bmat(1,2) = 0
+        bmat(1,3) = bb-y
+        bmat(1,4) = 0
+        bmat(1,5) = bb+y
+        bmat(1,6) = 0
+        bmat(1,7) = -(bb+y)
+        bmat(1,8) = 0
+        bmat(2,1) = 0
+        bmat(2,2) = -(aa-x)
+        bmat(2,3) = 0
+        bmat(2,4) = -(aa+x)
+        bmat(2,5) = 0
+        bmat(2,6) = aa+x
+        bmat(2,7) = 0
+        bmat(2,8) = aa-x
+        bmat(3,1) = -(aa-x)
+        bmat(3,2) = -(bb-y)
+        bmat(3,3) = -(aa+x)
+        bmat(3,4) = bb-y
+        bmat(3,5) = aa+x
+        bmat(3,6) = bb+y
+        bmat(3,7) = aa-x
+        bmat(3,8) = -(bb+y)
+
+        bmat = (1/(4*aa*bb))*bmat
 
         ! Compute element strain
         estrain = matmul(bmat, de)
 
         ! Build constitutive matrix (plane stress)
         cmat = 0
+        Emult = young/((1-2*nu)*(1+nu))
+
+        cmat(1,1) = 1-nu
+        cmat(1,2) = nu
+        cmat(1,3) = 0
+        cmat(2,1) = nu
+        cmat(2,2) = 1-nu
+        cmat(2,3) = 0
+        cmat(3,1) = 0
+        cmat(3,2) = 0
+        cmat(3,3) = (1-2*nu)
+        cmat = Emult*cmat
+
+
+        cmat2 = 0
+        Emult2 = young/(1-nu**2)
+
+        cmat2(1,1) = 1
+        cmat2(1,2) = nu
+        cmat2(1,3) = 0
+        cmat2(2,1) = nu
+        cmat2(2,2) = 1
+        cmat2(2,3) = 0
+        cmat2(3,1) = 0
+        cmat2(3,2) = 0
+        cmat2(3,3) = (1-nu)/2
+
+        cmat2 = Emult2*cmat2
+
 
         ! Compute element stress
-        estress = matmul(cmat, estrain)
+        estress = matmul(cmat2,estrain)
 
         ! Compute principal stress and direction
-        print *, 'WARNING in plane42rect/plane42rect_ss: subroutine incomplete -- you need to' &
-            // 'add some code in this subroutine'
+
+
     end subroutine plane42rect_ss
 
 end module plane42rect
