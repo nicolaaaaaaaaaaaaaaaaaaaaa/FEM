@@ -50,7 +50,6 @@ contains
             end do
 
             bw = maxdist + 1
-            print*, bw
             allocate (kmat (bw, neqn))
 
         end if
@@ -306,8 +305,11 @@ contains
 
         use fedata
 
-        integer :: i, idof, m, l, r, c, n
+        integer :: i, idof, m, l, r, c, n, a, limit, posit
         real(wp) :: penal
+
+        real(wp), dimension(neqn) :: kevector
+
 
         ! Correct for supports
         if (.not. banded) then
@@ -334,34 +336,65 @@ contains
                 p(idof) = bound(i, 3)
 
 
+                print*,'kmat'
+                do l = 1,size(kmat,1)
+                    print"(24(f6.2,tr1))",kmat(l,1:neqn)
+                end do
 
+                kevector = 0
 
-                kmat(:,idof) = 0
-                if (idof > bw) then
-                    do n = 1, bw-1
-                        r = n
-                        c = idof+1-n
-
+                if (idof <= bw) then
+                    posit = 1
+                    do n = 1, idof
+                        c = n
+                        r = idof + 1 - n
+                        kevector(n) = kmat(r,c)
                         kmat(r,c) = 0
                     end do
+
                 else
-                    do n = 1, idof-1
-                        r = n
-                        c = idof+1-n
+                    posit = idof - bw
+                    do n = 1, bw
+                        c = idof - bw + n
+                        r = bw + 1 - n
+                        kevector(n+posit) = kmat(r,c)
                         kmat(r,c) = 0
                     end do
                 end if
-                kmat(1,idof) = 1
 
-                !p(1:neqn) = p(1:neqn) - kmat(1:bw, idof) * bound(i, 3)
+                print*,'kevector'
+                print'(f6.2)',kevector
+
+                ! find and store column elements
+                if (idof < neqn-bw+2) then
+                    do a = 1,bw-1
+                        kevector(n+a-2+posit) = kmat(a+1,idof)
+                    end do
+                else
+                    do a = 1,(neqn-idof+1)
+                        print*,a
+                        kevector(n+a-2+posit) = kmat(a+1,idof)
+                    end do
+
+                end if
+
+                p(1:neqn) = p(1:neqn) - kevector * bound(i, 3)
+                kmat(:,idof) = 0
+                kmat(1,idof) = 1
 
             end do
         end if
+
+
 
     print*,'kmat'
     do l = 1,size(kmat,1)
         print"(24(f6.2,tr1))",kmat(l,1:neqn)
     end do
+
+    print*,'kevector'
+    print'(f6.2)',kevector
+
 
     end subroutine enforce
 !
