@@ -343,6 +343,8 @@ contains
 
                 kevector = 0
 
+                print*, idof
+
                 if (idof <= bw) then
                     posit = 1
                     do n = 1, idof
@@ -353,30 +355,32 @@ contains
                     end do
 
                 else
-                    posit = idof - bw
+                    posit = neqn - 2*bw + 1
                     do n = 1, bw
                         c = idof - bw + n
                         r = bw + 1 - n
-                        kevector(n+posit) = kmat(r,c)
+                        kevector(posit+n) = kmat(r,c)
                         kmat(r,c) = 0
                     end do
                 end if
-
+                
                 print*,'kevector'
                 print'(f6.2)',kevector
 
                 ! find and store column elements
                 if (idof < neqn-bw+2) then
                     do a = 1,bw-1
-                        kevector(n+a-2+posit) = kmat(a+1,idof)
+                        kevector(posit+n+a-2) = kmat(a+1,idof)
                     end do
                 else
-                    do a = 1,(neqn-idof+1)
-                        print*,a
-                        kevector(n+a-2+posit) = kmat(a+1,idof)
+                    do a = 1,bw-1
+                        kevector(posit+n+a-1) = kmat(a+1,idof)
                     end do
 
                 end if
+
+                print*,'kevector with columns'
+                print'(f6.2)',kevector
 
                 p(1:neqn) = p(1:neqn) - kevector * bound(i, 3)
                 kmat(:,idof) = 0
@@ -392,8 +396,6 @@ contains
         print"(24(f6.2,tr1))",kmat(l,1:neqn)
     end do
 
-    print*,'kevector'
-    print'(f6.2)',kevector
 
 
     end subroutine enforce
