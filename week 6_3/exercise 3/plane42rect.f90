@@ -228,27 +228,30 @@ contains
             nface(1,3) = aa
             nface(2,2) = aa
             nface(2,4) = aa
-            f(2) = -fe
+            f(2) = fe
         elseif (eface == 2) then
             nface(1,3) = bb
             nface(1,5) = bb
             nface(2,4) = bb
             nface(2,6) = bb
-            f(1) = fe
+            f(1) = -fe
         elseif (eface == 3) then
             nface(1,5) = aa
             nface(1,7) = aa
             nface(2,6) = aa
             nface(2,8) = aa
-            f(2) = fe
+            f(2) = -fe
         elseif (eface == 4) then
             nface(1,1) = bb
             nface(1,7) = bb
             nface(2,2) = bb
             nface(2,8) = bb
-            f(1) = -fe
+            f(1) = fe
         endif
         re = matmul(transpose(nface), f) * thk
+
+        print *, 're'
+        print *, re
     end subroutine plane42rect_re
 !
 !--------------------------------------------------------------------------------------------------
