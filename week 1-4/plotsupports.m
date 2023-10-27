@@ -1,6 +1,6 @@
 % file plotsupports.m
 % illustrates the boundary conditions on the structure
-% Original version by Brian Rømer, September 2003
+% Original version by Brian RÃ¸mer, September 2003
 % Modified by Ole Sigmund, August 2008 and August 2010
 
 %finding the size of the strcture and the deformed (new) coordinates
@@ -25,9 +25,9 @@ for b=1:size(bound,1)
     nodedof = [bound(b,1)*2-1 bound(b,1)*2];
     XX=Xnew(bound(b,1),1);
     YY=Xnew(bound(b,1),2);
-    dsup=abs(dsup); %hvis fortegnet har været vendt
+    dsup=abs(dsup); %hvis fortegnet har vÃ¦ret vendt
     if bound(b,2)==1  %hold in X-direction
-        if XX==maxX %and minX<>maxX %liiger helt til højre i en ikke "smal" konstruktionen 
+        if XX==maxX %and minX<>maxX %liiger helt til hÃ¸jre i en ikke "smal" konstruktionen 
             dsup=-dsup;
         end
         plot(XX,YY,'ko','LineWidth',1.5)
