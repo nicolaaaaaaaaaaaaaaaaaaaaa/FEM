@@ -1,6 +1,6 @@
 % file plotloads.m
 % illustrates the loads on the structure
-% Original version by Brian Rømer, September 2003
+% Original version by Brian RÃ¸mer, September 2003
 % Modified by Ole Sigmund, August 2008 and August 2010
 
 %using dsup from supports to dimension the arrows to the structure
