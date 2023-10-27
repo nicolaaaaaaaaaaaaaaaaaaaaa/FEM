@@ -115,10 +115,6 @@ contains
             end do
         end do
 
-        print*,'ke'
-        print*,ke
-
-
     end subroutine plane42rect_ke
 !
 !--------------------------------------------------------------------------------------------------
@@ -305,22 +301,27 @@ contains
             !! * `re(3:4)` = \((f_x^2, f_y^2)\) force at element node 1 in \(x\)- and y-direction
             !! * etc...
 
-        real(wp) :: aa, bb, nface(2,8), f(2)
         real(wp), dimension(1,2) :: g, weight
-        real(wp), dimension(2) :: jacvec
-        real(wp) :: eta, xi, w1, w2, coord, force
+        real(wp), dimension(2,1) :: jacvec
+        real(wp) :: eta, xi, w1, w2, coord
         integer(wp) :: ng, i
 
-        ng = 2
+        real(wp), dimension(2,8) :: n
+        real(wp), dimension(3,8) :: bmat
+        real(wp), dimension(2,2) :: jac
+        real(wp) :: detjac
+        real(wp), dimension(8,1) :: f
 
+        ng = 2
+        re = 0
+
+        !coord = 1/sqrt(3.0)
         coord = 1
         g(1,1) = +coord
         g(1,2) = -coord
 
         weight(1,1) = 1.0
         weight(1,2) = 1.0
-
-        force = 0
 
         if (eface == 1) then
             eta = -1
@@ -330,62 +331,61 @@ contains
 
                 call shape_42(xe,xi,eta,n,bmat,jac,detjac)
 
-                jacvec(1,1) = - jac(2,2)
+                jacvec(1,1) = - jac(1,2)
                 jacvec(2,1) =  jac(1,1)
 
-                f(2) = f(2) - w1*thk*fe*matmul(transpose(n)*jacvec)
+                re = re + reshape(w1*thk*fe*matmul(transpose(n),jacvec), shape(re))
 
+            end do
 
+        elseif (eface == 2) then
+            xi = 1
+            do i = 1,ng
+                eta = g(1,i)
+                w1 = weight(1,i)
 
+                call shape_42(xe,xi,eta,n,bmat,jac,detjac)
 
+                jacvec(1,1) = - jac(2,2)
+                jacvec(2,1) =  jac(2,1)
 
+                re = re + reshape(w1*thk*fe*matmul(transpose(n),jacvec), shape(re))
 
             end do
 
 
 
-        elseif (eface == 2) then
-
         elseif (eface == 3) then
+            eta = 1
+            do i = 1,ng
+                xi = g(1,i)
+                w1 = weight(1,i)
 
+                call shape_42(xe,xi,eta,n,bmat,jac,detjac)
+
+                jacvec(1,1) =  jac(1,2)
+                jacvec(2,1) = - jac(1,1)
+
+                re = re + reshape(w1*thk*fe*matmul(transpose(n),jacvec), shape(re))
+
+            end do
         elseif (eface == 4) then
+            xi = -1
+            do i = 1,ng
+                eta = g(1,i)
+                w1 = weight(1,i)
 
+                call shape_42(xe,xi,eta,n,bmat,jac,detjac)
+
+                jacvec(1,1) =  jac(2,2)
+                jacvec(2,1) = - jac(2,1)
+
+                re = re + reshape(w1*thk*fe*matmul(transpose(n),jacvec), shape(re))
+
+            end do
 
         end if
 
-
-
-        aa = (xe(3)-xe(1))/2
-        bb = (xe(8)-xe(2))/2
-
-        nface = 0
-        f = 0
-        if (eface == 1) then
-            nface(1,1) = aa
-            nface(1,3) = aa
-            nface(2,2) = aa
-            nface(2,4) = aa
-            f(2) = -fe
-        elseif (eface == 2) then
-            nface(1,3) = bb
-            nface(1,5) = bb
-            nface(2,4) = bb
-            nface(2,6) = bb
-            f(1) = fe
-        elseif (eface == 3) then
-            nface(1,5) = aa
-            nface(1,7) = aa
-            nface(2,6) = aa
-            nface(2,8) = aa
-            f(2) = fe
-        elseif (eface == 4) then
-            nface(1,1) = bb
-            nface(1,7) = bb
-            nface(2,2) = bb
-            nface(2,8) = bb
-            f(1) = -fe
-        endif
-        re = matmul(transpose(nface), f) * thk
     end subroutine plane42rect_re
 !
 !--------------------------------------------------------------------------------------------------
