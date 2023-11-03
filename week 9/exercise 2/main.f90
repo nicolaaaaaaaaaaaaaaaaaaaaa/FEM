@@ -9,6 +9,8 @@ program main
 
     implicit none
 
+    integer :: neig
+
     ! Read model data (in processor)
     call input
 
@@ -19,6 +21,7 @@ program main
     !call displ
 
     ! eigen stuff
-    call eigen
+    neig = 20
+    call eigen(neig)
 
 end program main

@@ -158,7 +158,7 @@ contains
 !--------------------------------------------------------------------------------------------------
 !
 
-    subroutine eigen
+    subroutine eigen(neig)
 
         !! This subroutine calculates displacements
 
@@ -166,13 +166,15 @@ contains
         use numeth
         use processor
 
-        integer :: i, j, pmax, k, neig
+        integer :: i, j, kmax, k
         real(wp), dimension(:), allocatable :: plotval
-        real(wp) :: comp, estop, rk, lambda, freq, cj
+        real(wp) :: comp, estop, rk, cj
+        integer, intent(in) :: neig
 
-        real(wp), dimension(neqn) :: xeigen, yeigen, xeigennew, yeigenprev, eigenvec
-        real(wp), dimension(neqn, neig-1) :: zeigen
-
+        real(wp), dimension(neqn) :: xeigen, yeigen, xeigennew, yeigenprev, eigenvec, zeigenvec
+        real(wp), dimension(neqn, neig) :: deigen, zeigen
+        real(wp), dimension(neqn, 1) :: matrix1
+        real(wp), dimension(neig) :: lambda, freq
         call stopwatch('star')
 
         ! Build load-vector
@@ -184,11 +186,12 @@ contains
         ! Remove rigid body modes
         call enforce
 
-        neig = 5
+        deigen = 0
 
-        pmax = 100
+        kmax = 100
         estop = 1e-12
 
+        ! factorize K
         if (.not. banded) then
             ! Factor stiffness matrix
             call factor(kmat)
@@ -203,35 +206,53 @@ contains
             ! initial guess
             xeigen = 1
             yeigen = 0
+            zeigen = 0
 
             ! compute Y
             call mmul(xeigen,yeigen)
 
+            print*, 'i'
+            print*, i
+
             ! compute z
             do j = 1, i-1
-                call mmul(xeigen,zeigen)
+
+                !print*, 'j'
+                !print*, j
+
+                call mmul(reshape(deigen(:,j),shape(xeigen)),zeigenvec)
+                zeigen(:,j) = zeigenvec
+
+                !print*, 'zeigen'
+                !print*, zeigen
 
             end do
 
 
-            do k = 1, pmax
+            do k = 1, kmax
 
                 yeigenprev = yeigen
 
-                ! factorize
+                ! compute xeigen
                 if (.not. banded) then
                     call solve(kmat, yeigen)
                 else
                     call bsolve(kmat, yeigen)
                 end if
-
                 xeigennew(1:neqn) = yeigen(1:neqn)
 
+                ! compute cj and orthogonalize xeigen
                 do j = 1, i-1
-                    cj = dot_product(xeigennew, )
+                    cj = dot_product(xeigennew, reshape(zeigen(:,j),shape(xeigen)))
+
+                    xeigennew = xeigennew - cj*reshape(deigen(:,j),shape(xeigen))
+
+                    !print*, 'cj'
+                    !print*, cj
+                    !print*, '(deigen(:,j)'
+                    !print*, deigen(:,j)
 
                 end do
-
 
                 call mmul(xeigennew,yeigen)
 
@@ -245,24 +266,30 @@ contains
 
             end do
 
-            eigenvec = xeigennew/rk
+            deigen(:,i) = xeigennew/rk
 
-            lambda = dot_product(xeigennew, yeigenprev)/rk**2
-            freq=sqrt(lambda)
-
+            lambda(i) = dot_product(xeigennew, yeigenprev)/rk**2
+            freq(i)=sqrt(lambda(i))
 
         end do
 
-        !print*, 'lambda'
-        !print*, lambda
-        !print*, 'freq'
-        1print*, freq
+        print*, neqn
+        print*, 'lambda'
+        print*, lambda
+        print*, 'freq'
+        print*, freq
+
+        ! neqn = 410
+        !print*,'kmat'
+        !do l = 1,size(kmat,1)
+        !    print"(24(f6.2,tr1))",kmat(l,1:neqn)
+        !end do
 
 
 
         call stopwatch('stop')
 
-        call plotmatlabeig('Eigenmode', freq , 5.0d0*eigenvec,[1.0d0,0.010d0])
+        !call plotmatlabeig('Eigenmode', freq , 5.0d0*eigenvec,[1.0d0,0.010d0])
 
     end subroutine eigen
 !
