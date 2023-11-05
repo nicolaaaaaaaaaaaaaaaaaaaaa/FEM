@@ -7,6 +7,7 @@
 /PREP7
 ! Define element type: ET, type #, name
 ET,1,PLANE42
+R,1, 0.200000000E-01
 ! Define material property: MP, property, card #, value
 MP,EX,1, 0.200000000E+12
 MP,PRXY,1, 0.300000000    
