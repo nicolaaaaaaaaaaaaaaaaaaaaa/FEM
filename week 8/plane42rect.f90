@@ -447,7 +447,7 @@ contains
         estrain = matmul(bmat, de)
 
 
-        ! Build constitutive matrix 1 (plane strain)
+        ! Build constitutive matrix 1 (plane stress)
 
         cmatmult1 = young/(1-nu**2)
         cmat1 = 0
@@ -456,7 +456,7 @@ contains
         cmat1(1,2) = nu
         cmat1(1,3) = 0
         cmat1(2,1) = nu
-        cmat1(2,2) = nu
+        cmat1(2,2) = 1
         cmat1(2,3) = 0
         cmat1(3,1) = 0
         cmat1(3,2) = 0
@@ -465,9 +465,9 @@ contains
         cmat1 = cmatmult1*cmat1
 
 
-        ! Build constitutive matrix 2 (plane stress)
+        ! Build constitutive matrix 2 (plane strain)
 
-        cmatmult2 = young/((1-2*nu)*(1+nu))
+        !cmatmult2 = young/((1-2*nu)*(1+nu))
         cmat2 = 0
 
         cmat2(1,1) = 1-nu
@@ -487,8 +487,9 @@ contains
         estress = matmul(cmat1, estrain)
 
         ! Compute principal stress and direction
-        sigma1 = 0.5*(estress(1)+estress(2)) + sqrt((0.5*(estress(1)-estress(2))**2)+estress(3)**2)
-        sigma2 = 0.5*(estress(1)+estress(2)) - sqrt((0.5*(estress(1)-estress(2))**2)+estress(3)**2)
+        eprincipal_stresses = 0
+        sigma1 = 0.5*(estress(1)+estress(2)) + sqrt(((0.5*(estress(1)-estress(2)))**2)+estress(3)**2)
+        sigma2 = 0.5*(estress(1)+estress(2)) - sqrt(((0.5*(estress(1)-estress(2)))**2)+estress(3)**2)
 
         cospsi = (estress(1)-estress(2))/(sigma1-sigma2)
         sinpsi = -2*estress(3)/(sigma1-sigma2)
