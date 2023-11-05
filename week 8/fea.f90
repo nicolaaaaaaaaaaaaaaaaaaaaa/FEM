@@ -116,6 +116,9 @@ contains
         !call compliance
         comp = dot_product(d,p)
 
+        print *, 'comp'
+        print*, comp
+
         ! Output results
         call output
 
@@ -476,6 +479,9 @@ contains
 
             end select
         end do
+
+        print *, 'sigma at A'
+        print *, sigmavm(22)
 
     end subroutine recover
 
