@@ -38,8 +38,9 @@ contains
         else
             do e = 1, ne
                 do i = 1, element(e)%numnode
-                    edof(2*i-1) = 2 * element(e)%ix(i) - 1
-                    edof(2*i)   = 2 * element(e)%ix(i)
+                    edof(3*i-2) = 3 * element(e)%ix(i) - 2
+                    edof(3*i-1) = 3 * element(e)%ix(i) - 1
+                    edof(3*i  ) = 3 * element(e)%ix(i)
                 end do
                 dist = maxval(edof) - minval(edof)
 
@@ -79,7 +80,6 @@ contains
         integer :: e, i,l
         real(wp), dimension(:), allocatable :: plotval
         real(wp) :: comp
-        !real(wp), dimension(:) :: kmat_original
 
         ! Build load-vector
         call buildload
@@ -89,10 +89,6 @@ contains
 
         ! Remove rigid body modes
         call enforce
-
-        ! from this point on, kmat gets changed and it is not possible to call it again :(
-
-        !kmat_original = kmat
 
         if (.not. banded) then
             ! Factor stiffness matrix
@@ -108,12 +104,13 @@ contains
 
         ! Transfer results
         d(1:neqn) = p(1:neqn)
+        print*, 'd'
+        print*, d
 
         ! Recover stress
-        call recover
+        !call recover
 
         ! compute global compliance
-        !call compliance
         comp = dot_product(d,p)
 
         ! Output results
@@ -141,10 +138,10 @@ contains
         call plotmatlabdef('Deformed')
 
         ! Plot element values
-        call plotmatlabeval('Stresses',plotval)
+        !call plotmatlabeval('Stresses',plotval)
 
         ! Plot principal stresses
-        call plotmatlabevec('Principal Stresses',principal_stresses(:,1), principal_stresses(:,2), principal_stresses(:,3))
+        !call plotmatlabevec('Principal Stresses',principal_stresses(:,1), principal_stresses(:,2), principal_stresses(:,3))
 
     end subroutine displ
 !
@@ -166,6 +163,11 @@ contains
 
         integer :: dof, en, nen
 
+        !print*, 'loads'
+        !do i = 1,neqn
+        !    print*, loads(i, 1:4)
+        !end do
+
         ! Build load vector
         p(1:neqn) = 0
 
@@ -173,13 +175,13 @@ contains
             select case(int(loads(i, 1)))
             case( 1 )
             	! Build nodal load contribution
-            	dof = loads(i, 2)*2-2+loads(i,3)
+            	dof = loads(i, 2)*3-3+loads(i,3)
                 p(dof) = loads(i,4)
 
             case( 2 )
 
             	! Build uniformly distributed surface (pressure) load contribution
-
+                print*, 'pressure loads in buildload'
             	en = loads(i,2)
                 nen = element(en)%numnode
             	eface = loads(i,3)
@@ -188,10 +190,16 @@ contains
 
             	! Find coordinates and degrees of freedom
                 do j = 1, nen
-                    xe(2*j-1) = x(element(en)%ix(j),1)
-                    xe(2*j  ) = x(element(en)%ix(j),2)
-                    edof(2*j-1) = 2 * element(en)%ix(j) - 1
-                    edof(2*j)   = 2 * element(en)%ix(j)
+                    xe(3*j-2) = x(element(en)%ix(j),1)
+                    xe(3*j-1) = x(element(en)%ix(j),2)
+                    xe(3*j  ) = x(element(en)%ix(j),3)
+
+                    !edof(2*j-1) = 2 * element(en)%ix(j) - 1
+                    !edof(2*j)   = 2 * element(en)%ix(j)
+
+                    edof(3*j-2) = 3 * element(en)%ix(j) - 2
+                    edof(3*j-1) = 3 * element(en)%ix(j) - 1
+                    edof(3*j  ) = 3 * element(en)%ix(j)
                 end do
 
 
@@ -209,9 +217,10 @@ contains
             end select
         end do
 
-        !do m = 1,size(p)
-        !    print*, m, p(m)
-        !end do
+        print*, 'p'
+        do m = 1,size(p)
+            print*, p(m)
+        end do
 
     end subroutine buildload
 !
@@ -256,10 +265,15 @@ contains
             nen = element(e)%numnode
 
             do i = 1, nen
-                 xe(2*i-1) = x(element(e)%ix(i),1)
-                 xe(2*i  ) = x(element(e)%ix(i),2)
-                 edof(2*i-1) = 2 * element(e)%ix(i) - 1
-                 edof(2*i)   = 2 * element(e)%ix(i)
+                 !xe(2*i-1) = x(element(e)%ix(i),1)
+                 !xe(2*i  ) = x(element(e)%ix(i),2)
+
+                 xe(3*i-2) = x(element(e)%ix(i),1)
+                 xe(3*i-1) = x(element(e)%ix(i),2)
+                 xe(3*i  ) = x(element(e)%ix(i),3)
+                 edof(3*i-2) = 3 * element(e)%ix(i) - 2
+                 edof(3*i-1) = 3 * element(e)%ix(i) - 1
+                 edof(3*i  ) = 3 * element(e)%ix(i)
             end do
 
             ! Gather material properties and find element stiffness matrix
@@ -273,38 +287,24 @@ contains
                  nu  = mprop(element(e)%mat)%nu
                  thk  = mprop(element(e)%mat)%thk
 
-                 call plane42rect_ke(xe, young, nu, thk, ke)
+                 call shell41_ke(xe, young, nu, thk, ke)
 
             end select
 
             ! Assemble into global matrix
             if (.not. banded) then
-                do i = 1, 2*nen
-                    do j = 1, 2*nen
+                do i = 1, 3*nen
+                    do j = 1, 3*nen
                         kmat(edof(i), edof(j)) = kmat(edof(i), edof(j)) + ke(i, j)
                     end do
                 end do
 
-                !do m = 1, size(kmat, dim = 1)
-                !    print *, kmat(m,:)
-                !end do
-
-                ! Hint: Can you eliminate the loops above by using a different Fortran array syntax?
-
             else
-                do i = 1,2*nen
-                    do j = 1,2*nen
+                do i = 1,3*nen
+                    do j = 1,3*nen
                         if (edof(j) <= edof(i)) then
                             krow = - (edof(j) - edof(i)) +1
                             kmat(krow,edof(j)) = kmat(krow,edof(j)) + ke(i,j)
-
-
-                        !krow = edof(r) - edof(c) +1
-                        !kcol = edof(c)
-
-                        !if (krow > 0) then
-                        !    kmat(krow,kcol) = kmat(krow,kcol) + ke(r,c)
-
                         end if
                     end do
                 end do
@@ -315,7 +315,7 @@ contains
 
         !print*,'kmat'
         !do l = 1,size(kmat,1)
-        !    print"(24(f6.2,tr1))",kmat(l,1:neqn)
+        !    print"(24(f12.4,tr1))",kmat(l,1:neqn)
         !end do
 
     end subroutine buildstiff
@@ -335,11 +335,13 @@ contains
         real(wp), dimension(neqn) :: kevector
         real(wp), dimension(bw,neqn) :: kmatUnbound
 
+
+
         ! Correct for supports
         if (.not. banded) then
             if (.not. penalty) then
                 do i = 1, nb
-                    idof = int(2*(bound(i,1)-1) + bound(i,2))
+                    idof = int(3*(bound(i,1)-1) + bound(i,2))
                     p(1:neqn) = p(1:neqn) - kmat(1:neqn, idof) * bound(i, 3)
                     p(idof) = bound(i, 3)
                     kmat(1:neqn, idof) = 0
@@ -349,7 +351,7 @@ contains
             else
                 penal = penalty_fac*maxval(kmat)
                 do i = 1, nb
-                    idof = int(2*(bound(i,1)-1) + bound(i,2))
+                    idof = int(3*(bound(i,1)-1) + bound(i,2))
                     kmat(idof, idof) = kmat(idof, idof) + penal
                     p(idof) = penal * bound(i, 3)
                 end do
@@ -360,37 +362,43 @@ contains
             kmatUnbound = kmat
             kevector=0
 
-	    do i = 1, nb
-            	idof = int(2*(bound(i,1)-1) + bound(i,2))
+            do i = 1, nb
+                    idof = int(3*(bound(i,1)-1) + bound(i,2))
 
-            if (idof > bw) then
-                ito = bw-1
-            else
-                ito = idof-1
-            end if
+                if (idof > bw) then
+                    ito = bw-1
+                else
+                    ito = idof-1
+                end if
 
-            do e = 1, ito
-                kevector(idof-e)=kmatUnbound((1+e), (idof - e))
-                kmat((1+e), (idof - e)) = 0
-            end do
+                do e = 1, ito
+                    kevector(idof-e)=kmatUnbound((1+e), (idof - e))
+                    kmat((1+e), (idof - e)) = 0
+                end do
 
-            if (idof > neqn-bw) then
-                kevector(idof:neqn)=kmat(1:(neqn-idof+1), idof)
-            else
-                kevector(idof:(idof+bw-1))=kmat(1:bw, idof)
-            end if
+                if (idof > neqn-bw) then
+                    kevector(idof:neqn)=kmat(1:(neqn-idof+1), idof)
+                else
+                    kevector(idof:(idof+bw-1))=kmat(1:bw, idof)
+                end if
 
-            p(1:neqn) = p(1:neqn) - kevector(1:neqn) * bound(i, 3)
-            p(idof) = bound(i, 3)
-            kmat(1:bw, idof) = 0
-            kmat(1, idof) = 1
+                p(1:neqn) = p(1:neqn) - kevector(1:neqn) * bound(i, 3)
+                p(idof) = bound(i, 3)
+                kmat(1:bw, idof) = 0
+                kmat(1, idof) = 1
 
-            end do
+                end do
         end if
+
 
         !print*,'kmat after enforce'
         !do l = 1,size(kmat,1)
-        !    print"(24(f6.2,tr1))",kmat(l,1:neqn)
+        !    print"(24(f10.4,tr1))",kmat(l,1:neqn)
+        !end do
+
+        !print*, 'p after enforce'
+        !do m = 1,size(p)
+        !    print*, m, p(m)
         !end do
 
     end subroutine enforce
@@ -425,17 +433,21 @@ contains
             ! Find coordinates etc...
             nen = element(e)%numnode
             do i = 1,nen
-                xe(2*i-1) = x(element(e)%ix(i), 1)
-                xe(2*i)   = x(element(e)%ix(i), 2)
-                edof(2*i-1) = 2 * element(e)%ix(i) - 1
-                edof(2*i)   = 2 * element(e)%ix(i)
-                de(2*i-1) = d(edof(2*i-1))
-                de(2*i)   = d(edof(2*i))
+                xe(3*i-2) = x(element(e)%ix(i), 1)
+                xe(3*i-1) = x(element(e)%ix(i), 2)
+                xe(3*i  ) = x(element(e)%ix(i), 3)
+                edof(3*i-2) = 3 * element(e)%ix(i) - 2
+                edof(3*i-1) = 3 * element(e)%ix(i) - 1
+                edof(3*i  ) = 3 * element(e)%ix(i)
+                de(3*i-2) = d(edof(3*i-2))
+                de(3*i-1) = d(edof(3*i-1))
+                de(3*i  ) = d(edof(3*i  ))
             end do
 
             ! Find stress and strain
             select case( element(e)%id )
             case( 1 )
+                ! truss problem
                 young = mprop(element(e)%mat)%young
                 area  = mprop(element(e)%mat)%area
 
@@ -447,89 +459,25 @@ contains
                 strain(e, 1:3) = estrain
 
             case( 2 )
+                 ! continuum problem
                  young = mprop(element(e)%mat)%young
                  nu  = mprop(element(e)%mat)%nu
                  thk  = mprop(element(e)%mat)%thk
 
-                 call plane42rect_ke(xe, young, nu, thk, ke)
-                 p(edof(1:2*nen)) = p(edof(1:2*nen)) + matmul(ke(1:2*nen,1:2*nen), de(1:2*nen))
+                 call shell41_ke(xe, young, nu, thk, ke)
+                 p(edof(1:3*nen)) = p(edof(1:3*nen)) + matmul(ke(1:3*nen,1:3*nen), de(1:3*nen))
 
-                 call plane42rect_ss(xe, de, young, nu, estress, estrain, eprincipal_stresses, esigmavm)
+                 print*, 'before plane42rect_ss'
+                 call shell41_ss(xe, de, young, nu, estress, estrain, eprincipal_stresses, esigmavm)
                  stress(e, 1:3) = estress
                  strain(e, 1:3) = estrain
                  principal_stresses(e, 1:3) = eprincipal_stresses
                  sigmavm(e) = esigmavm
+                 print*, 'after plane42rect_ss'
 
             end select
         end do
 
     end subroutine recover
-
-
-!
-!--------------------------------------------------------------------------------------------------
-!
-    subroutine compliance
-        ! to use this routine the enforced kmat is needed, without the LU factorization
-
-        use fedata
-
-        integer :: i, j, k, m, l, c, r, krow, kcol, a, n, posit, s ,q
-        real(wp), dimension(neqn) :: kevector, Dfirst
-        real(wp) :: compl
-
-        if (.not. banded) then
-            Dfirst = matmul(d,kmat)
-
-        else
-            do i = 1, neqn
-
-                kevector = 0
-
-                !compute k vector
-                ! avoid "hitting the side"
-                if (i <= bw) then
-                    posit = 1
-                    do n = 1, i          ! kvector has no zero on top, only on the bottom
-                        c = n
-                        r = i + 1 - n
-                        kevector(n) = kmat(r,c)
-                    end do
-
-                ! full diagonal
-                else
-                    posit = i - bw      ! kvector has zero both on top and bottom
-                    do n = 1, bw
-                        c = i - bw + n
-                        r = bw + 1 - n
-                        kevector(posit+n) = kmat(r,c)
-                    end do
-                end if
-
-                ! find and store column elements
-                ! no zeros on the bottom of the banded matrix
-                if (i < neqn-bw+2) then
-                    do a = 1,bw-1
-                        kevector(posit+n+a-2) = kmat(a+1,i)
-                    end do
-                ! zeros on the bottom of the banded (avoid overflow)
-                else
-                    do a = 1, neqn-i
-                        kevector(posit+n+a-1) = kmat(a+1,i)
-                    end do
-                end if
-
-                ! d automatically transposed
-                Dfirst(i) = dot_product(d, kevector)
-
-            end do
-        end if
-
-        compl = dot_product(Dfirst, d)
-
-        print*,'compliance function'
-        print*,compl
-
-    end subroutine compliance
 
 end module fea
