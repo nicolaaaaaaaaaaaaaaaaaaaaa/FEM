@@ -1,0 +1,136 @@
+/TITLE, CONTINUUM GROUND STRUCTURE
+! Created with:       FlExtract v1.13
+! Element type:       PLANE42
+! Number of nodes:    36
+! Number of elements: 25
+
+/PREP7
+! Element type: ET, type #, name
+ET, 1, PLANE42, , , 3
+
+! Define material property: MP, property, card #, value
+MP,	EX,	1,  	10000000  
+MP,	EY,	1,  	10000000      
+MP,	PRXY,	1, 	0.250000000    
+MP,	DENS,	1,  	1.00000000
+R, 		1,	0.05
+
+! Nodal coordinates: 'N', node_id, x-coord, y-coord, z-coord
+N,	1,	0,	0,	0
+N,	2,	0,	1,	0
+N,	3,	0,	2,	0
+N,	4,	0,	3,	0
+N,	5,	0,	4,	0
+N,	6,	0,	5,	0
+N,	7,	1,	0,	0
+N,	8,	1,	1,	0
+N,	9,	1,	2,	0
+N,	10,	1,	3,	0
+N,	11,	1,	4,	0
+N,	12,	1,	5,	0
+N,	13,	2,	0,	0
+N,	14,	2,	1,	0
+N,	15,	2,	2,	0
+N,	16,	2,	3,	0
+N,	17,	2,	4,	0
+N,	18,	2,	5,	0
+N,	19,	3,	0,	0
+N,	20,	3,	1,	0
+N,	21,	3,	2,	0
+N,	22,	3,	3,	0
+N,	23,	3,	4,	0
+N,	24,	3,	5,	0
+N,	25,	4,	0,	0
+N,	26,	4,	1,	0
+N,	27,	4,	2,	0
+N,	28,	4,	3,	0
+N,	29,	4,	4,	0
+N,	30,	4,	5,	0
+N,	31,	5,	0,	0
+N,	32,	5,	1,	0
+N,	33,	5,	2,	0
+N,	34,	5,	3,	0
+N,	35,	5,	4,	0
+N,	36,	5,	5,	0
+
+
+! Connectivity
+EN,	1,	1,	7,	8,	2
+EN,	2,	2,	8,	9,	3
+EN,	3,	3,	9,	10,	4
+EN,	4,	4,	10,	11,	5
+EN,	5,	5,	11,	12,	6
+EN,	6,	7,	13,	14,	8
+EN,	7,	8,	14,	15,	9
+EN,	8,	9,	15,	16,	10
+EN,	9,	10,	16,	17,	11
+EN,	10,	11,	17,	18,	12
+EN,	11,	13,	19,	20,	14
+EN,	12,	14,	20,	21,	15
+EN,	13,	15,	21,	22,	16
+EN,	14,	16,	22,	23,	17
+EN,	15,	17,	23,	24,	18
+EN,	16,	19,	25,	26,	20
+EN,	17,	20,	26,	27,	21
+EN,	18,	21,	27,	28,	22
+EN,	19,	22,	28,	29,	23
+EN,	20,	23,	29,	30,	24
+EN,	21,	25,	31,	32,	26
+EN,	22,	26,	32,	33,	27
+EN,	23,	27,	33,	34,	28
+EN,	24,	28,	34,	35,	29
+EN,	25,	29,	35,	36,	30
+
+! Nodal diplacement: 'D', node_id, 'UX / UY', value
+D,	1,	UX,	0
+D,	2,	UX,	0
+D,	3,	UX,	0
+D,	4,	UX,	0
+D,	5,	UX,	0
+D,	6,	UX,	0
+D,	7,	UX,	0
+D,	12,	UX,	0
+D,	13,	UX,	0
+D,	18,	UX,	0
+D,	19,	UX,	0
+D,	24,	UX,	0
+D,	25,	UX,	0
+D,	30,	UX,	0
+D,	31,	UX,	0
+D,	32,	UX,	0
+D,	33,	UX,	0
+D,	34,	UX,	0
+D,	35,	UX,	0
+D,	36,	UX,	0
+
+! Nodal load: 'F', node_id, 'FX / FY', value
+
+! Surface load: 'SFE', element_id, face_id, 'PRES', 0, value
+SFE,	1,	1, PRES, 0, 1
+SFE,	2,	1, PRES, 0, 1
+SFE,	3,	1, PRES, 0, 1
+SFE,	4,	1, PRES, 0, 1
+SFE,	5,	1, PRES, 0, 1
+SFE,	6,	1, PRES, 0, 1
+SFE,	7,	1, PRES, 0, 1
+SFE,	8,	1, PRES, 0, 1
+SFE,	9,	1, PRES, 0, 1
+SFE,	10,	1, PRES, 0, 1
+SFE,	11,	1, PRES, 0, 1
+SFE,	12,	1, PRES, 0, 1
+SFE,	13,	1, PRES, 0, 1
+SFE,	14,	1, PRES, 0, 1
+SFE,	15,	1, PRES, 0, 1
+SFE,	16,	1, PRES, 0, 1
+SFE,	17,	1, PRES, 0, 1
+SFE,	18,	1, PRES, 0, 1
+SFE,	19,	1, PRES, 0, 1
+SFE,	20,	1, PRES, 0, 1
+SFE,	21,	1, PRES, 0, 1
+SFE,	22,	1, PRES, 0, 1
+SFE,	23,	1, PRES, 0, 1
+SFE,	24,	1, PRES, 0, 1
+SFE,	25,	1, PRES, 0, 1
+
+
+FINISH
