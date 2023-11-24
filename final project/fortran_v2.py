@@ -1,30 +1,22 @@
 import os
 import re
+# chenge to your repository
 os.chdir('C:\\Users\\nicol\\Desktop\\pythonfiles\\FEM')
 
 # Input file name
+# file must have no spaces on the left
 input_file_name = 'kemat.txt'
 name_matrix = 'ke'
-
 
 
 # Output file name
 base_name = os.path.splitext(input_file_name)[0]
 output_file_name = base_name + '_out.txt'
 
-count=0
-# Read lines from the input file, remove '#' and add '&' appropriately
 with open(input_file_name, 'r') as input_file:
     lines = input_file.readlines()
 
-
 modified_lines = []
-
-# errors:
-
-# element 0.11D1 must be intact
-
-
 
 next_line = lines[0].lstrip('#').strip()
 
