@@ -1534,6 +1534,1699 @@ subroutine shell41_ke(xe, young, youngy, shear, theta, nu, thk, ke)
         GXY)*dble(bb**2)*(-dble(nu**2*EEY)+EE))*t**3/(-dble(nu**2*EEY)+EE)/dble(aa)/dble(bb)/0.9D1
 
 
+ke(1,1) = ((EE ** 2 * dble(bb ** 4) + (dble(aa ** 2 * EEY) + 0.19D2&
+ / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb ** 2)) * dble(aa **&
+2) * EE - 0.38D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(aa ** 2)&
+* dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((0.19D2 / 0.10D2 * EE&
+** 2 * dble(aa ** 2) * dble(bb ** 2) + (dble((2 * nu * EEY + 4 *&
+GXY) * aa ** 4) + 0.19D2 / 0.10D2 * dble(EEY) * dble(aa ** 2) * dble(&
+bb ** 2) + dble(2 * bb ** 4 * (nu * EEY + 2 * GXY))) * EE - dble(&
+4 * nu ** 2 * EEY * GXY * (aa ** 4 + bb ** 4))) * s ** 2 - 0.19D2&
+ / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * c ** 2 + (EE ** 2 * dble(&
+aa ** 4) + EE * dble(EEY) * dble(bb ** 4)) * s ** 4 + dble(bb&
+** 2) * ((dble(nu * EEY) + 0.14D2 / 0.5D1 * dble(GXY)) * EE - 0.14D2&
+ / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2&
+) / 0.2D1) * t ** 3 / (-dble(EEY * nu ** 2) + EE) / dble(aa ** 3)&
+/ dble(bb ** 3) / 0.12D2
+ke(1,2) = ((EE ** 2 * dble(bb ** 2) + 0.7D1 / 0.5D1 * dble(aa ** 2&
+) * dble(nu * EEY + 2 * GXY) * EE - 0.14D2 / 0.5D1 * dble(EEY) * dble(&
+GXY) * dble(aa ** 2) * dble(nu ** 2)) * c ** 4 + ((0.7D1 / 0.10D2&
+ * EE ** 2 * dble(aa ** 2) + (0.7D1 / 0.10D2 * dble(aa ** 2) *&
+dble(EEY) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2)) * EE - dble(&
+4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 - 0.7D1 / 0.5D1 * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(&
+aa ** 2)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) + (&
+(dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 / 0.5D1&
+* dble(EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2) / 0.2D1)&
+* t ** 3 / (-dble(EEY * nu ** 2) + EE) / dble(aa ** 2) / dble(bb)&
+/ 0.12D2
+ke(1,3) = (((0.7D1 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb **&
+2) + dble(aa ** 2 * EEY)) * EE - 0.14D2 / 0.5D1 * dble(EEY) * dble(&
+GXY) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((0.7D1 / 0.10D2&
+ * EE ** 2 * dble(bb ** 2) + (0.7D1 / 0.10D2 * dble(EEY) * dble(bb&
+ ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY))) * EE - dble(4&
+* EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 - 0.7D1 / 0.5D1 * dble(&
+bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu&
+ ** 2))) * c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) + dble(bb **&
+2) * ((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 /&
+0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)) / 0.2D1) * t ** 3&
+/ (-dble(EEY * nu ** 2) + EE) / dble(bb ** 2) / dble(aa) / 0.12D2
+ke(1,4) = ((-0.2D1 * EE ** 2 * dble(bb ** 4) + dble(aa ** 2) * (dble(&
+aa ** 2 * EEY) - 0.38D2 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(&
+bb ** 2)) * EE + 0.76D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((-0.19D2 / 0.5D1&
+ * EE ** 2 * dble(aa ** 2) * dble(bb ** 2) + (dble((2 * nu * EEY&
+ + 4 * GXY) * aa ** 4) - 0.19D2 / 0.5D1 * dble(EEY) * dble(aa **&
+2) * dble(bb ** 2) - dble(4 * bb ** 4 * (nu * EEY + 2 * GXY))) *&
+EE - dble(4 * nu ** 2 * EEY * GXY * (aa ** 4 - 2 * bb ** 4))) * s&
+** 2 + 0.38D2 / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY)&
+* EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * c ** 2 +&
+(EE ** 2 * dble(aa ** 4) - 0.2D1 * EE * dble(EEY) * dble(bb ** 4))&
+* s ** 4 - dble(bb ** 2) * ((dble(nu * EEY) + 0.14D2 / 0.5D1 * dble(&
+GXY)) * EE - 0.14D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu **&
+ 2)) * dble(aa ** 2)) * t ** 3 / (-dble(EEY * nu ** 2) + EE) / dble(&
+aa ** 3) / dble(bb ** 3) / 0.24D2
+ke(1,5) = t ** 3 * ((-0.4D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(nu ** 2) + EE ** 2 * dble(bb ** 2) + 0.4D1 / 0.5D1&
+ * EE * dble(GXY) * dble(aa ** 2)) * c ** 4 + ((EE ** 2 * dble(aa&
+** 2) / 0.5D1 + (-0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(aa ** 2) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2)&
+) * EE - dble(4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 - 0.4D1&
+/ 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE)&
+) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) + dble(GXY) *&
+dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY&
+* nu ** 2) + EE) / dble(aa ** 2) / dble(bb) / 0.12D2
+ke(1,6) = t ** 3 * ((0.14D2 / 0.5D1 * (dble(-nu * EEY - 2 * GXY) *&
+EE + dble(2 * EEY * GXY * nu ** 2)) * dble(bb ** 2) + dble(aa **&
+2) * EE * dble(EEY)) * c ** 4 + 0.4D1 * dble(aa) * s * (((dble(nu)&
+- 0.1D1 / 0.2D1) * dble(EEY) + dble(2 * GXY)) * EE - dble(2 * EEY&
+* GXY * nu ** 2)) * dble(bb) * c ** 3 + ((-0.7D1 / 0.5D1 * EE * (&
+EE + dble(EEY)) * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY&
+) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2&
++ 0.14D2 / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE&
+- dble(2 * EEY * GXY * nu ** 2))) * c ** 2 + 0.2D1 * (EE ** 2 * s&
+** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(2 * EEY * GXY * nu **&
+2)) * dble(aa) * s * dble(bb) * c + EE ** 2 * s ** 4 * dble(aa **&
+2) - dble(bb ** 2) * ((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)&
+) * EE - 0.2D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2))) /&
+(-dble(EEY * nu ** 2) + EE) / dble(bb ** 2) / dble(aa) / 0.24D2
+
+ke(1,7) = -t ** 3 * ((EE ** 2 * dble(bb ** 4) + dble(aa ** 2) * (dble(&
+aa ** 2 * EEY) - 0.38D2 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb&
+ ** 2)) * EE + 0.76D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((-0.19D2 /&
+0.5D1 * EE ** 2 * dble(aa ** 2) * dble(bb ** 2) + (dble((2 * nu *&
+EEY + 4 * GXY) * aa ** 4) - 0.19D2 / 0.5D1 * dble(EEY) * dble(aa **&
+ 2) * dble(bb ** 2) + dble(2 * bb ** 4 * (nu * EEY + 2 * GXY))) *&
+EE - dble(4 * nu ** 2 * EEY * GXY * (aa ** 4 + bb ** 4))) * s **&
+2 + 0.38D2 / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE&
+ - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * c ** 2 + (EE&
+** 2 * dble(aa ** 4) + EE * dble(EEY) * dble(bb ** 4)) * s ** 4 -&
+dble(bb ** 2) * ((dble(nu * EEY) + 0.14D2 / 0.5D1 * dble(GXY)) *&
+EE - 0.14D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)) * dble(&
+aa ** 2)) / (-dble(EEY * nu ** 2) + EE) / dble(aa ** 3) / dble(bb&
+ ** 3) / 0.24D2
+
+ke(1,8) = t ** 3 * ((-0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) *&
+(-dble(EEY * nu ** 2) + EE) + EE ** 2 * dble(bb ** 2)) * c ** 4 -&
+0.2D1 * dble(aa) * s * dble(bb) * (EE ** 2 + dble(-2 * nu * EEY -&
+4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * c ** 3 + ((-0.2D1&
+/ 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE * dble(aa ** 2) +&
+0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 *&
+EEY * GXY * nu ** 2))) * s ** 2 + 0.8D1 / 0.5D1 * dble(GXY) * dble(&
+aa ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2 + 0.2D1 * dble(&
+bb) * (EE * dble(EEY) * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE +&
+dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * c + EE * dble(EEY)&
+* s ** 4 * dble(bb ** 2) - 0.2D1 / 0.5D1 * dble(GXY) * dble(aa **&
+2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY * nu ** 2) + EE) /&
+dble(aa ** 2) / dble(bb) / 0.24D2
+ke(1,9) = t ** 3 * ((-0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) *&
+(-dble(EEY * nu ** 2) + EE) + dble(aa ** 2) * EE * dble(EEY)) * c&
+** 4 - 0.4D1 * dble(aa) * s * (((dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) + dble(2 * GXY)) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(&
+bb) * c ** 3 + ((-0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)&
+) * EE * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY) * EE -&
+dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2 + 0.8D1 /&
+0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE))&
+* c ** 2 - 0.2D1 * (EE ** 2 * s ** 2 + dble(-nu * EEY - 2 * GXY) *&
+EE + dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * dble(bb) * c&
++ EE ** 2 * s ** 4 * dble(aa ** 2) - 0.2D1 / 0.5D1 * dble(GXY) *&
+dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY * nu **&
+2) + EE) / dble(bb ** 2) / dble(aa) / 0.24D2
+ke(1,10) = -t ** 3 * ((-EE ** 2 * dble(bb ** 4) / 0.2D1 + (dble(aa&
+** 2 * EEY) + 0.19D2 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb&
+** 2)) * dble(aa ** 2) * EE - 0.38D2 / 0.5D1 * dble(EEY) * dble(GXY&
+) * dble(aa ** 2) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((&
+0.19D2 / 0.10D2 * EE ** 2 * dble(aa ** 2) * dble(bb ** 2) + (dble(&
+(2 * nu * EEY + 4 * GXY) * aa ** 4) + 0.19D2 / 0.10D2 * dble(EEY)&
+* dble(aa ** 2) * dble(bb ** 2) - dble(bb ** 4 * (nu * EEY + 2 * GXY&
+))) * EE - 0.4D1 * dble(EEY) * (dble(aa ** 4) - dble(bb ** 4) /&
+0.2D1) * dble(nu ** 2) * dble(GXY)) * s ** 2 - 0.19D2 / 0.5D1 * dble(&
+bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY&
+* nu ** 2)) * dble(aa ** 2)) * c ** 2 + EE * (EE * dble(aa ** 4) -&
+dble(bb ** 4 * EEY) / 0.2D1) * s ** 4 + dble(bb ** 2) * ((dble(nu&
+* EEY) + 0.14D2 / 0.5D1 * dble(GXY)) * EE - 0.14D2 / 0.5D1 * dble(&
+EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2) / 0.2D1) / (-dble(&
+EEY * nu ** 2) + EE) / dble(aa ** 3) / dble(bb ** 3) / 0.12D2
+ke(1,11) = ((0.14D2 / 0.5D1 * (dble(-nu * EEY - 2 * GXY) * EE + dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa ** 2) + EE ** 2 * dble(bb **&
+ 2)) * c ** 4 + 0.2D1 * dble(bb) * dble(aa) * s * (EE ** 2 + 0.2D1&
+ * dble(-nu * EEY - 2 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)&
+) * c ** 3 + ((-0.7D1 / 0.5D1 * EE * (EE + dble(EEY)) * dble(aa **&
+2) + 0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(&
+2 * EEY * GXY * nu ** 2))) * s ** 2 + 0.14D2 / 0.5D1 * (dble(nu&
+* EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa **&
+ 2)) * c ** 2 - 0.2D1 * dble(bb) * (EE * dble(EEY) * s ** 2 + dble(&
+-nu * EEY - 2 * GXY) * EE + dble(2 * EEY * GXY * nu ** 2)) * dble(&
+aa) * s * c + EE * dble(EEY) * s ** 4 * dble(bb ** 2) - ((dble(nu&
+ * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 / 0.5D1 * dble(&
+EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2)) * t ** 3 / (-dble(&
+EEY * nu ** 2) + EE) / dble(aa ** 2) / dble(bb) / 0.24D2
+ke(1,12) = t ** 3 * (((dble(aa ** 2 * EEY) + 0.4D1 / 0.5D1 * dble(&
+GXY) * dble(bb ** 2)) * EE - 0.4D1 / 0.5D1 * dble(EEY) * dble(GXY)&
+* dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((EE ** 2 * dble(bb **&
+ 2) / 0.5D1 + (-0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(bb ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY)))&
+* EE - dble(4 * EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 - 0.4D1 /&
+0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE))&
+* c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) + dble(GXY) * dble(bb&
+** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY * nu **&
+2) + EE) / dble(bb ** 2) / dble(aa) / 0.12D2
+ke(2,1) = ((EE ** 2 * dble(bb ** 2) + 0.7D1 / 0.5D1 * dble(aa ** 2&
+) * dble(nu * EEY + 2 * GXY) * EE - 0.14D2 / 0.5D1 * dble(EEY) * dble(&
+GXY) * dble(aa ** 2) * dble(nu ** 2)) * c ** 4 + ((0.7D1 / 0.10D2&
+ * EE ** 2 * dble(aa ** 2) + (0.7D1 / 0.10D2 * dble(aa ** 2) *&
+dble(EEY) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2)) * EE - dble(&
+4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 - 0.7D1 / 0.5D1 * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(&
+aa ** 2)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) + (&
+(dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 / 0.5D1&
+* dble(EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2) / 0.2D1)&
+* t ** 3 / (-dble(EEY * nu ** 2) + EE) / dble(aa ** 2) / dble(bb)&
+/ 0.12D2
+
+ke(2,2) = ((0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY&
+* nu ** 2) + EE) + EE ** 2 * dble(bb ** 2)) * c ** 4 - 0.3D1 / 0.4D1&
+ * dble(aa) * s * dble(bb) * (EE ** 2 + dble(-2 * nu * EEY - 4&
+* GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * c ** 3 + ((0.2D1 /&
+0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE * dble(aa ** 2) + 0.2D1&
+ * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY&
+ * GXY * nu ** 2))) * s ** 2 - 0.8D1 / 0.5D1 * dble(GXY) * dble(aa&
+ ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2 + 0.3D1 / 0.4D1 *&
+dble(bb) * (EE * dble(EEY) * s ** 2 + dble(-nu * EEY - 2 * GXY) *&
+EE + dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * c + EE * dble(&
+EEY) * s ** 4 * dble(bb ** 2) + 0.2D1 / 0.5D1 * dble(GXY) * dble(&
+aa ** 2) * (-dble(EEY * nu ** 2) + EE)) * t ** 3 / (-dble(EEY * nu&
+** 2) + EE) / dble(aa) / dble(bb) / 0.9D1
+
+ke(2,3) = -t ** 3 * (-0.12D2 * EE * dble(EEY) * c ** 4 * dble(aa)&
+* dble(bb) * dble(nu) + (EE ** 2 * dble(bb ** 2) + dble(((-1 + 2 *&
+nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2 - 4 *&
+GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb) *&
+(aa + bb))) * s * c ** 3 - 0.6D1 * dble(aa) * ((EE ** 2 + dble(EEY&
+- 4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * s ** 2 - 0.2D1&
+* EE * dble(EEY) * dble(nu)) * dble(bb) * c ** 2 + ((EE ** 2 * dble(&
+aa ** 2) - EE * dble(EEY) * dble(bb ** 2)) * s ** 2 - dble(aa +&
+bb) * dble(aa - bb) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY&
+ * GXY * nu ** 2))) * s * c - 0.6D1 * EE * dble(EEY) * dble(aa)&
+* dble(bb) * dble(nu)) / (-dble(EEY * nu ** 2) + EE) / dble(aa) /&
+dble(bb) / 0.72D2
+ke(2,4) = -t ** 3 * ((-0.4D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(nu ** 2) + EE ** 2 * dble(bb ** 2) + 0.4D1 / 0.5D1&
+ * EE * dble(GXY) * dble(aa ** 2)) * c ** 4 + ((EE ** 2 * dble(aa&
+ ** 2) / 0.5D1 + (-0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(aa ** 2) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2&
+)) * EE - dble(4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 - 0.4D1&
+ / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE&
+)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) + dble(GXY)&
+* dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY&
+ * nu ** 2) + EE) / dble(aa ** 2) / dble(bb) / 0.12D2
+ke(2,5) = t ** 3 * ((0.4D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(nu ** 2) + EE ** 2 * dble(bb ** 2) - 0.4D1 / 0.5D1&
+* EE * dble(GXY) * dble(aa ** 2)) * c ** 4 + ((-EE ** 2 * dble(aa&
+** 2) / 0.5D1 + (0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(aa ** 2) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2))&
+* EE - dble(4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 + 0.4D1&
+/ 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE))&
+* c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) - dble(GXY) *&
+dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY&
+* nu ** 2) + EE) / dble(aa) / dble(bb) / 0.18D2
+ke(2,6) = t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1 +&
+2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2 -&
+4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (-&
+dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(2,7) = -t ** 3 * ((-0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) *&
+(-dble(EEY * nu ** 2) + EE) + EE ** 2 * dble(bb ** 2)) * c ** 4 -&
+0.2D1 * dble(aa) * s * dble(bb) * (EE ** 2 + dble(-2 * nu * EEY -&
+4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * c ** 3 + ((-0.2D1&
+ / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE * dble(aa ** 2)&
++ 0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2&
+* EEY * GXY * nu ** 2))) * s ** 2 + 0.8D1 / 0.5D1 * dble(GXY) * dble(&
+aa ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2 + 0.2D1 * dble(&
+bb) * (EE * dble(EEY) * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE +&
+dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * c + EE * dble(EEY&
+) * s ** 4 * dble(bb ** 2) - 0.2D1 / 0.5D1 * dble(GXY) * dble(aa **&
+ 2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY * nu ** 2) + EE)&
+/ dble(aa ** 2) / dble(bb) / 0.24D2
+ke(2,8) = t ** 3 * ((0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) * (&
+-dble(EEY * nu ** 2) + EE) + EE ** 2 * dble(bb ** 2)) * c ** 4 - 0.3D1&
+ * dble(aa) * s * dble(bb) * (EE ** 2 + dble(-2 * nu * EEY - 4&
+* GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * c ** 3 + ((0.2D1 /&
+0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE * dble(aa ** 2) + 0.2D1&
+ * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY&
+ * GXY * nu ** 2))) * s ** 2 - 0.8D1 / 0.5D1 * dble(GXY) * dble(&
+aa ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2 + 0.3D1 * dble(bb&
+) * (EE * dble(EEY) * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa) * s * c + EE * dble(EEY) *&
+s ** 4 * dble(bb ** 2) + 0.2D1 / 0.5D1 * dble(GXY) * dble(aa ** 2&
+) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY * nu ** 2) + EE) / dble(&
+aa) / dble(bb) / 0.36D2
+ke(2,9) = -t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1&
++ 2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2&
+- 4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (&
+-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(2,10) = ((0.14D2 / 0.5D1 * (dble(-nu * EEY - 2 * GXY) * EE + dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa ** 2) + EE ** 2 * dble(bb **&
+ 2)) * c ** 4 - 0.2D1 * dble(bb) * dble(aa) * s * (EE ** 2 + 0.2D1&
+ * dble(-nu * EEY - 2 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)&
+) * c ** 3 + ((-0.7D1 / 0.5D1 * EE * (EE + dble(EEY)) * dble(aa **&
+2) + 0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(&
+2 * EEY * GXY * nu ** 2))) * s ** 2 + 0.14D2 / 0.5D1 * (dble(nu&
+* EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa **&
+ 2)) * c ** 2 + 0.2D1 * dble(bb) * (EE * dble(EEY) * s ** 2 + dble(&
+-nu * EEY - 2 * GXY) * EE + dble(2 * EEY * GXY * nu ** 2)) * dble(&
+aa) * s * c + EE * dble(EEY) * s ** 4 * dble(bb ** 2) - ((dble(nu&
+ * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 / 0.5D1 * dble(&
+EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2)) * t ** 3 / (-dble(&
+EEY * nu ** 2) + EE) / dble(aa ** 2) / dble(bb) / 0.24D2
+
+ke(2,11) = t ** 3 * ((0.16D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(nu ** 2) + EE ** 2 * dble(bb ** 2) - 0.16D2 / 0.5D1&
+ * EE * dble(GXY) * dble(aa ** 2)) * c ** 4 + 0.2D1 * ((-0.2D1&
+/ 0.5D1 * EE ** 2 * dble(aa ** 2) + (0.4D1 / 0.5D1 * (dble(nu) - 0.1D1&
+ / 0.2D1) * dble(EEY) * dble(aa ** 2) + dble((nu * EEY + 2 * GXY&
+) * bb ** 2)) * EE - dble(2 * EEY * GXY * bb ** 2 * nu ** 2)) *&
+s ** 2 + 0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY *&
+nu ** 2) + EE)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2)&
+- 0.4D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu **&
+2) + EE)) / (-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.18D2
+
+ke(2,12) = t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1&
++ 2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2&
+- 4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (&
+-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(3,1) = (((0.7D1 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb **&
+2) + dble(aa ** 2 * EEY)) * EE - 0.14D2 / 0.5D1 * dble(EEY) * dble(&
+GXY) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((0.7D1 / 0.10D2&
+ * EE ** 2 * dble(bb ** 2) + (0.7D1 / 0.10D2 * dble(EEY) * dble(bb&
+ ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY))) * EE - dble(4&
+* EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 - 0.7D1 / 0.5D1 * dble(&
+bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu&
+ ** 2))) * c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) + dble(bb **&
+2) * ((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 /&
+0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)) / 0.2D1) * t ** 3&
+/ (-dble(EEY * nu ** 2) + EE) / dble(bb ** 2) / dble(aa) / 0.12D2
+ke(3,2) = -t ** 3 * (-0.12D2 * EE * dble(EEY) * c ** 4 * dble(aa)&
+* dble(bb) * dble(nu) + (EE ** 2 * dble(bb ** 2) + dble(((-1 + 2 *&
+nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2 - 4 *&
+GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb) *&
+(aa + bb))) * s * c ** 3 - 0.6D1 * dble(aa) * ((EE ** 2 + dble(EEY&
+- 4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * s ** 2 - 0.2D1&
+* EE * dble(EEY) * dble(nu)) * dble(bb) * c ** 2 + ((EE ** 2 * dble(&
+aa ** 2) - EE * dble(EEY) * dble(bb ** 2)) * s ** 2 - dble(aa +&
+bb) * dble(aa - bb) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY&
+ * GXY * nu ** 2))) * s * c - 0.6D1 * EE * dble(EEY) * dble(aa)&
+* dble(bb) * dble(nu)) / (-dble(EEY * nu ** 2) + EE) / dble(aa) /&
+dble(bb) / 0.72D2
+ke(3,3) = t ** 3 * ((0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) * (&
+-dble(EEY * nu ** 2) + EE) + dble(aa ** 2) * EE * dble(EEY)) * c **&
+ 4 - 0.3D1 / 0.2D1 * dble(aa) * s * (((dble(nu) - 0.1D1 / 0.2D1)&
+* dble(EEY) + dble(2 * GXY)) * EE - dble(2 * EEY * GXY * nu ** 2))&
+* dble(bb) * c ** 3 + ((0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1)&
+* EEY)) * EE * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY) *&
+EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2 - 0.8D1&
+ / 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) +&
+EE)) * c ** 2 - 0.3D1 / 0.4D1 * (EE ** 2 * s ** 2 + dble(-nu * EEY&
+ - 2 * GXY) * EE + dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s&
+* dble(bb) * c + EE ** 2 * s ** 4 * dble(aa ** 2) + 0.2D1 / 0.5D1&
+* dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(&
+EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.9D1
+ke(3,4) = t ** 3 * ((0.14D2 / 0.5D1 * (dble(-nu * EEY - 2 * GXY) *&
+EE + dble(2 * EEY * GXY * nu ** 2)) * dble(bb ** 2) + dble(aa **&
+2) * EE * dble(EEY)) * c ** 4 - 0.4D1 * dble(aa) * s * (((dble(nu)&
+- 0.1D1 / 0.2D1) * dble(EEY) + dble(2 * GXY)) * EE - dble(2 * EEY&
+* GXY * nu ** 2)) * dble(bb) * c ** 3 + ((-0.7D1 / 0.5D1 * EE * (&
+EE + dble(EEY)) * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY&
+) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2&
++ 0.14D2 / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE&
+- dble(2 * EEY * GXY * nu ** 2))) * c ** 2 - 0.2D1 * (EE ** 2 * s&
+** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(2 * EEY * GXY * nu **&
+2)) * dble(aa) * s * dble(bb) * c + EE ** 2 * s ** 4 * dble(aa **&
+2) - dble(bb ** 2) * ((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)&
+) * EE - 0.2D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2))) /&
+(-dble(EEY * nu ** 2) + EE) / dble(bb ** 2) / dble(aa) / 0.24D2
+ke(3,5) = t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1 +&
+2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2 -&
+4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (-&
+dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+
+ke(3,6) = t ** 3 * (((dble(aa ** 2 * EEY) - 0.16D2 / 0.5D1 * dble(&
+GXY) * dble(bb ** 2)) * EE + 0.16D2 / 0.5D1 * dble(EEY) * dble(GXY&
+) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + 0.2D1 * ((-0.2D1 / 0.5D1&
+ * EE ** 2 * dble(bb ** 2) + (0.4D1 / 0.5D1 * (dble(nu) - 0.1D1&
+ / 0.2D1) * dble(EEY) * dble(bb ** 2) + dble(aa ** 2 * (nu * EEY&
++ 2 * GXY))) * EE - dble(2 * EEY * GXY * aa ** 2 * nu ** 2)) * s **&
+ 2 + 0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu&
+** 2) + EE)) * c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) - 0.4D1 /&
+0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE))&
+/ (-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.18D2
+
+ke(3,7) = -t ** 3 * ((-0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) *&
+(-dble(EEY * nu ** 2) + EE) + dble(aa ** 2) * EE * dble(EEY)) * c&
+** 4 - 0.4D1 * dble(aa) * s * (((dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) + dble(2 * GXY)) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(&
+bb) * c ** 3 + ((-0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY&
+)) * EE * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY) * EE -&
+dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2 + 0.8D1&
+/ 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE))&
+* c ** 2 - 0.2D1 * (EE ** 2 * s ** 2 + dble(-nu * EEY - 2 * GXY)&
+* EE + dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * dble(bb) *&
+c + EE ** 2 * s ** 4 * dble(aa ** 2) - 0.2D1 / 0.5D1 * dble(GXY) *&
+dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY * nu **&
+2) + EE) / dble(bb ** 2) / dble(aa) / 0.24D2
+ke(3,8) = -t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1&
++ 2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2&
+- 4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (&
+-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(3,9) = ((0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY&
+* nu ** 2) + EE) + dble(aa ** 2) * EE * dble(EEY)) * c ** 4 - 0.6D1&
+ * dble(aa) * s * (((dble(nu) - 0.1D1 / 0.2D1) * dble(EEY) + dble(&
+2 * GXY)) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(bb) * c **&
+ 3 + ((0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE * dble(&
+bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY&
+ * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2 - 0.8D1 / 0.5D1 * dble(&
+GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2 -&
+0.3D1 * (EE ** 2 * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa) * s * dble(bb) * c + EE ** 2&
+* s ** 4 * dble(aa ** 2) + 0.2D1 / 0.5D1 * dble(GXY) * dble(bb **&
+2) * (-dble(EEY * nu ** 2) + EE)) * t ** 3 / (-dble(EEY * nu ** 2)&
++ EE) / dble(aa) / dble(bb) / 0.36D2
+ke(3,10) = -t ** 3 * (((dble(aa ** 2 * EEY) + 0.4D1 / 0.5D1 * dble(&
+GXY) * dble(bb ** 2)) * EE - 0.4D1 / 0.5D1 * dble(EEY) * dble(GXY&
+) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((EE ** 2 * dble(bb&
+** 2) / 0.5D1 + (-0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(bb ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY)))&
+* EE - dble(4 * EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 - 0.4D1&
+/ 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE))&
+* c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) + dble(GXY) * dble(bb&
+** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY * nu **&
+2) + EE) / dble(bb ** 2) / dble(aa) / 0.12D2
+ke(3,11) = t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1&
++ 2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2&
+- 4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (&
+-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(3,12) = t ** 3 * (((dble(aa ** 2 * EEY) - 0.4D1 / 0.5D1 * dble(&
+GXY) * dble(bb ** 2)) * EE + 0.4D1 / 0.5D1 * dble(EEY) * dble(GXY)&
+* dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((-EE ** 2 * dble(bb&
+** 2) / 0.5D1 + (0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(bb ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY)))&
+* EE - dble(4 * EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 + 0.4D1 /&
+0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE))&
+* c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) - dble(GXY) * dble(bb&
+** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY * nu **&
+2) + EE) / dble(aa) / dble(bb) / 0.18D2
+ke(4,1) = ((-0.2D1 * EE ** 2 * dble(bb ** 4) + dble(aa ** 2) * (dble(&
+aa ** 2 * EEY) - 0.38D2 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(&
+bb ** 2)) * EE + 0.76D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((-0.19D2 / 0.5D1&
+ * EE ** 2 * dble(aa ** 2) * dble(bb ** 2) + (dble((2 * nu * EEY&
+ + 4 * GXY) * aa ** 4) - 0.19D2 / 0.5D1 * dble(EEY) * dble(aa **&
+2) * dble(bb ** 2) - dble(4 * bb ** 4 * (nu * EEY + 2 * GXY))) *&
+EE - dble(4 * nu ** 2 * EEY * GXY * (aa ** 4 - 2 * bb ** 4))) * s&
+** 2 + 0.38D2 / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY)&
+* EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * c ** 2 +&
+(EE ** 2 * dble(aa ** 4) - 0.2D1 * EE * dble(EEY) * dble(bb ** 4))&
+* s ** 4 - dble(bb ** 2) * ((dble(nu * EEY) + 0.14D2 / 0.5D1 * dble(&
+GXY)) * EE - 0.14D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu **&
+ 2)) * dble(aa ** 2)) * t ** 3 / (-dble(EEY * nu ** 2) + EE) / dble(&
+aa ** 3) / dble(bb ** 3) / 0.24D2
+ke(4,2) = -t ** 3 * ((-0.4D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(nu ** 2) + EE ** 2 * dble(bb ** 2) + 0.4D1 / 0.5D1&
+ * EE * dble(GXY) * dble(aa ** 2)) * c ** 4 + ((EE ** 2 * dble(aa&
+ ** 2) / 0.5D1 + (-0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(aa ** 2) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2&
+)) * EE - dble(4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 - 0.4D1&
+ / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE&
+)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) + dble(GXY)&
+* dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY&
+ * nu ** 2) + EE) / dble(aa ** 2) / dble(bb) / 0.12D2
+ke(4,3) = t ** 3 * ((0.14D2 / 0.5D1 * (dble(-nu * EEY - 2 * GXY) *&
+EE + dble(2 * EEY * GXY * nu ** 2)) * dble(bb ** 2) + dble(aa **&
+2) * EE * dble(EEY)) * c ** 4 - 0.4D1 * dble(aa) * s * (((dble(nu)&
+- 0.1D1 / 0.2D1) * dble(EEY) + dble(2 * GXY)) * EE - dble(2 * EEY&
+* GXY * nu ** 2)) * dble(bb) * c ** 3 + ((-0.7D1 / 0.5D1 * EE * (&
+EE + dble(EEY)) * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY&
+) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2&
++ 0.14D2 / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE&
+- dble(2 * EEY * GXY * nu ** 2))) * c ** 2 - 0.2D1 * (EE ** 2 * s&
+** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(2 * EEY * GXY * nu **&
+2)) * dble(aa) * s * dble(bb) * c + EE ** 2 * s ** 4 * dble(aa **&
+2) - dble(bb ** 2) * ((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)&
+) * EE - 0.2D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2))) /&
+(-dble(EEY * nu ** 2) + EE) / dble(bb ** 2) / dble(aa) / 0.24D2
+
+ke(4,4) = ((EE ** 2 * dble(bb ** 4) + (dble(aa ** 2 * EEY) + 0.19D2&
+ / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb ** 2)) * dble(aa **&
+2) * EE - 0.38D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(aa ** 2)&
+* dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((0.19D2 / 0.10D2 * EE&
+** 2 * dble(aa ** 2) * dble(bb ** 2) + (dble((2 * nu * EEY + 4 *&
+GXY) * aa ** 4) + 0.19D2 / 0.10D2 * dble(EEY) * dble(aa ** 2) * dble(&
+bb ** 2) + dble(2 * bb ** 4 * (nu * EEY + 2 * GXY))) * EE - dble(&
+4 * nu ** 2 * EEY * GXY * (aa ** 4 + bb ** 4))) * s ** 2 - 0.19D2&
+ / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * c ** 2 + (EE ** 2 * dble(&
+aa ** 4) + EE * dble(EEY) * dble(bb ** 4)) * s ** 4 + dble(bb&
+** 2) * ((dble(nu * EEY) + 0.14D2 / 0.5D1 * dble(GXY)) * EE - 0.14D2&
+ / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2)&
+ / 0.2D1) * t ** 3 / (-dble(EEY * nu ** 2) + EE) / dble(aa ** 3)&
+/ dble(bb ** 3) / 0.12D2
+
+ke(4,5) = -((EE ** 2 * dble(bb ** 2) + 0.7D1 / 0.5D1 * dble(aa **&
+2) * dble(nu * EEY + 2 * GXY) * EE - 0.14D2 / 0.5D1 * dble(EEY) *&
+dble(GXY) * dble(aa ** 2) * dble(nu ** 2)) * c ** 4 + ((0.7D1 / 0.10D2&
+ * EE ** 2 * dble(aa ** 2) + (0.7D1 / 0.10D2 * dble(aa ** 2) *&
+dble(EEY) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2)) * EE - dble(&
+4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 - 0.7D1 / 0.5D1 * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(&
+aa ** 2)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) +&
+((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 / 0.5D1&
+* dble(EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2) / 0.2D1)&
+* t ** 3 / (-dble(EEY * nu ** 2) + EE) / dble(aa ** 2) / dble(bb)&
+/ 0.12D2
+ke(4,6) = (((0.7D1 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb **&
+2) + dble(aa ** 2 * EEY)) * EE - 0.14D2 / 0.5D1 * dble(EEY) * dble(&
+GXY) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((0.7D1 / 0.10D2&
+ * EE ** 2 * dble(bb ** 2) + (0.7D1 / 0.10D2 * dble(EEY) * dble(bb&
+ ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY))) * EE - dble(4&
+* EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 - 0.7D1 / 0.5D1 * dble(&
+bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu&
+ ** 2))) * c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) + dble(bb **&
+2) * ((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 /&
+0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)) / 0.2D1) * t ** 3&
+/ (-dble(EEY * nu ** 2) + EE) / dble(bb ** 2) / dble(aa) / 0.12D2
+ke(4,7) = -t ** 3 * ((-EE ** 2 * dble(bb ** 4) / 0.2D1 + (dble(aa&
+** 2 * EEY) + 0.19D2 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb&
+** 2)) * dble(aa ** 2) * EE - 0.38D2 / 0.5D1 * dble(EEY) * dble(GXY&
+) * dble(aa ** 2) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((0.19D2&
+ / 0.10D2 * EE ** 2 * dble(aa ** 2) * dble(bb ** 2) + (dble((&
+2 * nu * EEY + 4 * GXY) * aa ** 4) + 0.19D2 / 0.10D2 * dble(EEY) *&
+dble(aa ** 2) * dble(bb ** 2) - dble(bb ** 4 * (nu * EEY + 2 * GXY&
+))) * EE - 0.4D1 * dble(EEY) * (dble(aa ** 4) - dble(bb ** 4) / 0.2D1&
+) * dble(nu ** 2) * dble(GXY)) * s ** 2 - 0.19D2 / 0.5D1 * dble(&
+bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY *&
+nu ** 2)) * dble(aa ** 2)) * c ** 2 + EE * (EE * dble(aa ** 4) -&
+dble(bb ** 4 * EEY) / 0.2D1) * s ** 4 + dble(bb ** 2) * ((dble(nu&
+* EEY) + 0.14D2 / 0.5D1 * dble(GXY)) * EE - 0.14D2 / 0.5D1 * dble(&
+EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2) / 0.2D1) / (-dble(&
+EEY * nu ** 2) + EE) / dble(aa ** 3) / dble(bb ** 3) / 0.12D2
+ke(4,8) = -((0.14D2 / 0.5D1 * (dble(-nu * EEY - 2 * GXY) * EE + dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa ** 2) + EE ** 2 * dble(bb **&
+ 2)) * c ** 4 - 0.2D1 * dble(bb) * dble(aa) * s * (EE ** 2 + 0.2D1&
+ * dble(-nu * EEY - 2 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)&
+) * c ** 3 + ((-0.7D1 / 0.5D1 * EE * (EE + dble(EEY)) * dble(aa **&
+2) + 0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(&
+2 * EEY * GXY * nu ** 2))) * s ** 2 + 0.14D2 / 0.5D1 * (dble(nu&
+* EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa **&
+ 2)) * c ** 2 + 0.2D1 * dble(bb) * (EE * dble(EEY) * s ** 2 + dble(&
+-nu * EEY - 2 * GXY) * EE + dble(2 * EEY * GXY * nu ** 2)) * dble(&
+aa) * s * c + EE * dble(EEY) * s ** 4 * dble(bb ** 2) - ((dble(nu&
+ * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 / 0.5D1 * dble(&
+EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2)) * t ** 3 / (-dble(&
+EEY * nu ** 2) + EE) / dble(aa ** 2) / dble(bb) / 0.24D2
+ke(4,9) = t ** 3 * (((dble(aa ** 2 * EEY) + 0.4D1 / 0.5D1 * dble(GXY&
+) * dble(bb ** 2)) * EE - 0.4D1 / 0.5D1 * dble(EEY) * dble(GXY)&
+* dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((EE ** 2 * dble(bb **&
+2) / 0.5D1 + (-0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(bb ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY))) *&
+EE - dble(4 * EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 - 0.4D1 /&
+0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) *&
+c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) + dble(GXY) * dble(bb **&
+ 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY * nu ** 2&
+) + EE) / dble(bb ** 2) / dble(aa) / 0.12D2
+ke(4,10) = -t ** 3 * ((EE ** 2 * dble(bb ** 4) + dble(aa ** 2) * (&
+dble(aa ** 2 * EEY) - 0.38D2 / 0.5D1 * dble(nu * EEY + 2 * GXY) *&
+dble(bb ** 2)) * EE + 0.76D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((-0.19D2 /&
+0.5D1 * EE ** 2 * dble(aa ** 2) * dble(bb ** 2) + (dble((2 * nu *&
+EEY + 4 * GXY) * aa ** 4) - 0.19D2 / 0.5D1 * dble(EEY) * dble(aa&
+** 2) * dble(bb ** 2) + dble(2 * bb ** 4 * (nu * EEY + 2 * GXY)))&
+* EE - dble(4 * nu ** 2 * EEY * GXY * (aa ** 4 + bb ** 4))) * s **&
+2 + 0.38D2 / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) *&
+EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * c ** 2 + (EE&
+ ** 2 * dble(aa ** 4) + EE * dble(EEY) * dble(bb ** 4)) * s ** 4&
+- dble(bb ** 2) * ((dble(nu * EEY) + 0.14D2 / 0.5D1 * dble(GXY)) *&
+EE - 0.14D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)) * dble(&
+aa ** 2)) / (-dble(EEY * nu ** 2) + EE) / dble(aa ** 3) / dble(&
+bb ** 3) / 0.24D2
+ke(4,11) = -t ** 3 * ((-0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2)&
+* (-dble(EEY * nu ** 2) + EE) + EE ** 2 * dble(bb ** 2)) * c ** 4&
++ 0.2D1 * dble(aa) * s * dble(bb) * (EE ** 2 + dble(-2 * nu * EEY&
+- 4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * c ** 3 + ((-0.2D1&
+ / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE * dble(aa ** 2)&
++ 0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2&
+* EEY * GXY * nu ** 2))) * s ** 2 + 0.8D1 / 0.5D1 * dble(GXY) * dble(&
+aa ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2 - 0.2D1 * dble(&
+bb) * (EE * dble(EEY) * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE&
++ dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * c + EE * dble(EEY&
+) * s ** 4 * dble(bb ** 2) - 0.2D1 / 0.5D1 * dble(GXY) * dble(aa&
+** 2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY * nu ** 2) + EE)&
+/ dble(aa ** 2) / dble(bb) / 0.24D2
+ke(4,12) = ((-0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY&
+ * nu ** 2) + EE) + dble(aa ** 2) * EE * dble(EEY)) * c ** 4 + 0.4D1&
+ * dble(aa) * s * (((dble(nu) - 0.1D1 / 0.2D1) * dble(EEY) + dble(&
+2 * GXY)) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(bb) * c&
+** 3 + ((-0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE *&
+dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY) * EE - dble(2 *&
+EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2 + 0.8D1 / 0.5D1 *&
+dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2&
++ 0.2D1 * (EE ** 2 * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa) * s * dble(bb) * c + EE **&
+2 * s ** 4 * dble(aa ** 2) - 0.2D1 / 0.5D1 * dble(GXY) * dble(bb&
+** 2) * (-dble(EEY * nu ** 2) + EE)) * t ** 3 / (-dble(EEY * nu **&
+2) + EE) / dble(bb ** 2) / dble(aa) / 0.24D2
+ke(5,1) = t ** 3 * ((-0.4D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(nu ** 2) + EE ** 2 * dble(bb ** 2) + 0.4D1 / 0.5D1&
+ * EE * dble(GXY) * dble(aa ** 2)) * c ** 4 + ((EE ** 2 * dble(aa&
+** 2) / 0.5D1 + (-0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(aa ** 2) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2)&
+) * EE - dble(4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 - 0.4D1&
+/ 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE)&
+) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) + dble(GXY) *&
+dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY&
+* nu ** 2) + EE) / dble(aa ** 2) / dble(bb) / 0.12D2
+ke(5,2) = t ** 3 * ((0.4D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(nu ** 2) + EE ** 2 * dble(bb ** 2) - 0.4D1 / 0.5D1&
+* EE * dble(GXY) * dble(aa ** 2)) * c ** 4 + ((-EE ** 2 * dble(aa&
+** 2) / 0.5D1 + (0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(aa ** 2) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2))&
+* EE - dble(4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 + 0.4D1&
+/ 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE))&
+* c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) - dble(GXY) *&
+dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY&
+* nu ** 2) + EE) / dble(aa) / dble(bb) / 0.18D2
+ke(5,3) = t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1 +&
+2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2 -&
+4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (-&
+dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(5,4) = -((EE ** 2 * dble(bb ** 2) + 0.7D1 / 0.5D1 * dble(aa **&
+2) * dble(nu * EEY + 2 * GXY) * EE - 0.14D2 / 0.5D1 * dble(EEY) *&
+dble(GXY) * dble(aa ** 2) * dble(nu ** 2)) * c ** 4 + ((0.7D1 / 0.10D2&
+ * EE ** 2 * dble(aa ** 2) + (0.7D1 / 0.10D2 * dble(aa ** 2) *&
+dble(EEY) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2)) * EE - dble(&
+4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 - 0.7D1 / 0.5D1 * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(&
+aa ** 2)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) +&
+((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 / 0.5D1&
+* dble(EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2) / 0.2D1)&
+* t ** 3 / (-dble(EEY * nu ** 2) + EE) / dble(aa ** 2) / dble(bb)&
+/ 0.12D2
+ke(5,5) = t ** 3 * ((0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) * (&
+-dble(EEY * nu ** 2) + EE) + EE ** 2 * dble(bb ** 2)) * c ** 4 + 0.3D1&
+ / 0.4D1 * dble(aa) * s * dble(bb) * (EE ** 2 + dble(-2 * nu *&
+EEY - 4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * c ** 3 + (&
+(0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE * dble(aa **&
+ 2) + 0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(&
+2 * EEY * GXY * nu ** 2))) * s ** 2 - 0.8D1 / 0.5D1 * dble(GXY)&
+* dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2 - 0.3D1 /&
+0.4D1 * dble(bb) * (EE * dble(EEY) * s ** 2 + dble(-nu * EEY - 2&
+* GXY) * EE + dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * c +&
+EE * dble(EEY) * s ** 4 * dble(bb ** 2) + 0.2D1 / 0.5D1 * dble(GXY&
+) * dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY * nu&
+** 2) + EE) / dble(aa) / dble(bb) / 0.9D1
+
+ke(5,6) = -t ** 3 * (0.12D2 * EE * dble(EEY) * c ** 4 * dble(aa) *&
+dble(bb) * dble(nu) + (EE ** 2 * dble(bb ** 2) + dble(((-1 + 2 *&
+nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2 - 4 *&
+GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb) * (&
+aa + bb))) * s * c ** 3 + 0.6D1 * dble(aa) * ((EE ** 2 + dble(EEY&
+- 4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * s ** 2 - 0.2D1&
+* EE * dble(EEY) * dble(nu)) * dble(bb) * c ** 2 + ((EE ** 2 * dble(&
+aa ** 2) - EE * dble(EEY) * dble(bb ** 2)) * s ** 2 - dble(aa +&
+bb) * dble(aa - bb) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY&
+ * GXY * nu ** 2))) * s * c + 0.6D1 * EE * dble(EEY) * dble(aa) *&
+dble(bb) * dble(nu)) / (-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb&
+) / 0.72D2
+
+ke(5,7) = -((0.14D2 / 0.5D1 * (dble(-nu * EEY - 2 * GXY) * EE + dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa ** 2) + EE ** 2 * dble(bb **&
+ 2)) * c ** 4 + 0.2D1 * dble(bb) * dble(aa) * s * (EE ** 2 + 0.2D1&
+ * dble(-nu * EEY - 2 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)&
+) * c ** 3 + ((-0.7D1 / 0.5D1 * EE * (EE + dble(EEY)) * dble(aa **&
+2) + 0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(&
+2 * EEY * GXY * nu ** 2))) * s ** 2 + 0.14D2 / 0.5D1 * (dble(nu&
+* EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa **&
+ 2)) * c ** 2 - 0.2D1 * dble(bb) * (EE * dble(EEY) * s ** 2 + dble(&
+-nu * EEY - 2 * GXY) * EE + dble(2 * EEY * GXY * nu ** 2)) * dble(&
+aa) * s * c + EE * dble(EEY) * s ** 4 * dble(bb ** 2) - ((dble(nu&
+ * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 / 0.5D1 * dble(&
+EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2)) * t ** 3 / (-dble(&
+EEY * nu ** 2) + EE) / dble(aa ** 2) / dble(bb) / 0.24D2
+
+ke(5,8) = t ** 3 * ((0.16D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(nu ** 2) + EE ** 2 * dble(bb ** 2) - 0.16D2 / 0.5D1&
+ * EE * dble(GXY) * dble(aa ** 2)) * c ** 4 + 0.2D1 * ((-0.2D1 /&
+0.5D1 * EE ** 2 * dble(aa ** 2) + (0.4D1 / 0.5D1 * (dble(nu) - 0.1D1&
+ / 0.2D1) * dble(EEY) * dble(aa ** 2) + dble((nu * EEY + 2 * GXY&
+) * bb ** 2)) * EE - dble(2 * EEY * GXY * bb ** 2 * nu ** 2)) * s&
+** 2 + 0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu&
+ ** 2) + EE)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2)&
+- 0.4D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu ** 2&
+) + EE)) / (-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.18D2
+
+ke(5,9) = t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1 +&
+2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2 -&
+4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (-&
+dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(5,10) = t ** 3 * ((-0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) *&
+(-dble(EEY * nu ** 2) + EE) + EE ** 2 * dble(bb ** 2)) * c ** 4 +&
+0.2D1 * dble(aa) * s * dble(bb) * (EE ** 2 + dble(-2 * nu * EEY -&
+4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * c ** 3 + ((-0.2D1&
+ / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE * dble(aa ** 2)&
++ 0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2&
+* EEY * GXY * nu ** 2))) * s ** 2 + 0.8D1 / 0.5D1 * dble(GXY) * dble(&
+aa ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2 - 0.2D1 * dble(&
+bb) * (EE * dble(EEY) * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE +&
+dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * c + EE * dble(EEY&
+) * s ** 4 * dble(bb ** 2) - 0.2D1 / 0.5D1 * dble(GXY) * dble(aa **&
+ 2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY * nu ** 2) + EE)&
+/ dble(aa ** 2) / dble(bb) / 0.24D2
+
+ke(5,11) = ((0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY&
+ * nu ** 2) + EE) + EE ** 2 * dble(bb ** 2)) * c ** 4 + 0.3D1 * dble(&
+aa) * s * dble(bb) * (EE ** 2 + dble(-2 * nu * EEY - 4 * GXY)&
+* EE + dble(4 * EEY * GXY * nu ** 2)) * c ** 3 + ((0.2D1 / 0.5D1 *&
+(EE + dble((-2 * nu + 1) * EEY)) * EE * dble(aa ** 2) + 0.2D1 * dble(bb&
+ ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY&
+* nu ** 2))) * s ** 2 - 0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2)&
+* (-dble(EEY * nu ** 2) + EE)) * c ** 2 - 0.3D1 * dble(bb) * (EE&
+* dble(EEY) * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(2 * EEY&
+ * GXY * nu ** 2)) * dble(aa) * s * c + EE * dble(EEY) * s ** 4&
+* dble(bb ** 2) + 0.2D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(&
+EEY * nu ** 2) + EE)) * t ** 3 / (-dble(EEY * nu ** 2) + EE) /&
+dble(aa) / dble(bb) / 0.36D2
+
+ke(5,12) = -t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1&
++ 2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2&
+- 4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa -&
+bb) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(&
+EEY) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (&
+dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) /&
+(-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(6,1) = t ** 3 * ((0.14D2 / 0.5D1 * (dble(-nu * EEY - 2 * GXY) *&
+EE + dble(2 * EEY * GXY * nu ** 2)) * dble(bb ** 2) + dble(aa **&
+2) * EE * dble(EEY)) * c ** 4 + 0.4D1 * dble(aa) * s * (((dble(nu)&
+- 0.1D1 / 0.2D1) * dble(EEY) + dble(2 * GXY)) * EE - dble(2 * EEY&
+* GXY * nu ** 2)) * dble(bb) * c ** 3 + ((-0.7D1 / 0.5D1 * EE * (&
+EE + dble(EEY)) * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY&
+) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2&
++ 0.14D2 / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE&
+- dble(2 * EEY * GXY * nu ** 2))) * c ** 2 + 0.2D1 * (EE ** 2 * s&
+** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(2 * EEY * GXY * nu **&
+2)) * dble(aa) * s * dble(bb) * c + EE ** 2 * s ** 4 * dble(aa **&
+2) - dble(bb ** 2) * ((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)&
+) * EE - 0.2D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2))) /&
+(-dble(EEY * nu ** 2) + EE) / dble(bb ** 2) / dble(aa) / 0.24D2
+ke(6,2) = t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1 +&
+2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2 -&
+4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (-&
+dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+
+ke(6,3) = t ** 3 * (((dble(aa ** 2 * EEY) - 0.16D2 / 0.5D1 * dble(&
+GXY) * dble(bb ** 2)) * EE + 0.16D2 / 0.5D1 * dble(EEY) * dble(GXY&
+) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + 0.2D1 * ((-0.2D1 / 0.5D1&
+ * EE ** 2 * dble(bb ** 2) + (0.4D1 / 0.5D1 * (dble(nu) - 0.1D1&
+/ 0.2D1) * dble(EEY) * dble(bb ** 2) + dble(aa ** 2 * (nu * EEY&
++ 2 * GXY))) * EE - dble(2 * EEY * GXY * aa ** 2 * nu ** 2)) * s **&
+ 2 + 0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu&
+** 2) + EE)) * c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) - 0.4D1 /&
+0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE))&
+/ (-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.18D2
+
+ke(6,4) = (((0.7D1 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb **&
+2) + dble(aa ** 2 * EEY)) * EE - 0.14D2 / 0.5D1 * dble(EEY) * dble(&
+GXY) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((0.7D1 / 0.10D2&
+ * EE ** 2 * dble(bb ** 2) + (0.7D1 / 0.10D2 * dble(EEY) * dble(bb&
+ ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY))) * EE - dble(4&
+* EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 - 0.7D1 / 0.5D1 * dble(&
+bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu&
+ ** 2))) * c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) + dble(bb **&
+2) * ((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 /&
+0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)) / 0.2D1) * t ** 3&
+/ (-dble(EEY * nu ** 2) + EE) / dble(bb ** 2) / dble(aa) / 0.12D2
+ke(6,5) = -t ** 3 * (0.12D2 * EE * dble(EEY) * c ** 4 * dble(aa) *&
+dble(bb) * dble(nu) + (EE ** 2 * dble(bb ** 2) + dble(((-1 + 2 *&
+nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2 - 4 *&
+GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb) * (&
+aa + bb))) * s * c ** 3 + 0.6D1 * dble(aa) * ((EE ** 2 + dble(EEY&
+- 4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * s ** 2 - 0.2D1&
+* EE * dble(EEY) * dble(nu)) * dble(bb) * c ** 2 + ((EE ** 2 * dble(&
+aa ** 2) - EE * dble(EEY) * dble(bb ** 2)) * s ** 2 - dble(aa +&
+bb) * dble(aa - bb) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY&
+ * GXY * nu ** 2))) * s * c + 0.6D1 * EE * dble(EEY) * dble(aa) *&
+dble(bb) * dble(nu)) / (-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb&
+) / 0.72D2
+ke(6,6) = ((0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY&
+* nu ** 2) + EE) + dble(aa ** 2) * EE * dble(EEY)) * c ** 4 + 0.3D1&
+ / 0.2D1 * dble(aa) * s * (((dble(nu) - 0.1D1 / 0.2D1) * dble(EEY&
+) + dble(2 * GXY)) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(bb&
+) * c ** 3 + ((0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) *&
+EE * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY) * EE - dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2 - 0.8D1 / 0.5D1&
+ * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) * c&
+** 2 + 0.3D1 / 0.4D1 * (EE ** 2 * s ** 2 + dble(-nu * EEY - 2 * GXY&
+) * EE + dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * dble(bb&
+) * c + EE ** 2 * s ** 4 * dble(aa ** 2) + 0.2D1 / 0.5D1 * dble(GXY&
+) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) * t ** 3 / (-dble(&
+EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.9D1
+ke(6,7) = -t ** 3 * (((dble(aa ** 2 * EEY) + 0.4D1 / 0.5D1 * dble(&
+GXY) * dble(bb ** 2)) * EE - 0.4D1 / 0.5D1 * dble(EEY) * dble(GXY)&
+* dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((EE ** 2 * dble(bb **&
+ 2) / 0.5D1 + (-0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(bb ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY)))&
+* EE - dble(4 * EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 - 0.4D1 /&
+0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE))&
+* c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) + dble(GXY) * dble(bb&
+** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY * nu **&
+2) + EE) / dble(bb ** 2) / dble(aa) / 0.12D2
+ke(6,8) = t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1 +&
+2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2 -&
+4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (-&
+dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(6,9) = t ** 3 * (((dble(aa ** 2 * EEY) - 0.4D1 / 0.5D1 * dble(GXY&
+) * dble(bb ** 2)) * EE + 0.4D1 / 0.5D1 * dble(EEY) * dble(GXY)&
+* dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((-EE ** 2 * dble(bb **&
+ 2) / 0.5D1 + (0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(bb ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY))) *&
+EE - dble(4 * EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 + 0.4D1 /&
+0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) *&
+c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) - dble(GXY) * dble(bb **&
+ 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY * nu ** 2&
+) + EE) / dble(aa) / dble(bb) / 0.18D2
+ke(6,10) = -((-0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(&
+EEY * nu ** 2) + EE) + dble(aa ** 2) * EE * dble(EEY)) * c ** 4 +&
+0.4D1 * dble(aa) * s * (((dble(nu) - 0.1D1 / 0.2D1) * dble(EEY) +&
+dble(2 * GXY)) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(bb) *&
+c ** 3 + ((-0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE&
+* dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY) * EE - dble(2&
+* EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2 + 0.8D1 / 0.5D1&
+* dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) * c **&
+2 + 0.2D1 * (EE ** 2 * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa) * s * dble(bb) * c + EE **&
+ 2 * s ** 4 * dble(aa ** 2) - 0.2D1 / 0.5D1 * dble(GXY) * dble(bb&
+** 2) * (-dble(EEY * nu ** 2) + EE)) * t ** 3 / (-dble(EEY * nu **&
+ 2) + EE) / dble(bb ** 2) / dble(aa) / 0.24D2
+ke(6,11) = -t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1&
++ 2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2&
+- 4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa -&
+bb) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(&
+EEY) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (&
+dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) /&
+(-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+
+ke(6,12) = t ** 3 * ((0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) *&
+(-dble(EEY * nu ** 2) + EE) + dble(aa ** 2) * EE * dble(EEY)) * c&
+** 4 + 0.6D1 * dble(aa) * s * (((dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) + dble(2 * GXY)) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(&
+bb) * c ** 3 + ((0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY))&
+* EE * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY) * EE - dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2 - 0.8D1 /&
+0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) *&
+c ** 2 + 0.3D1 * (EE ** 2 * s ** 2 + dble(-nu * EEY - 2 * GXY) *&
+EE + dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * dble(bb) * c&
++ EE ** 2 * s ** 4 * dble(aa ** 2) + 0.2D1 / 0.5D1 * dble(GXY) * dble(bb&
+ ** 2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY * nu ** 2&
+) + EE) / dble(aa) / dble(bb) / 0.36D2
+
+ke(7,1) = -t ** 3 * ((EE ** 2 * dble(bb ** 4) + dble(aa ** 2) * (dble(&
+aa ** 2 * EEY) - 0.38D2 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb&
+ ** 2)) * EE + 0.76D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((-0.19D2 /&
+0.5D1 * EE ** 2 * dble(aa ** 2) * dble(bb ** 2) + (dble((2 * nu *&
+EEY + 4 * GXY) * aa ** 4) - 0.19D2 / 0.5D1 * dble(EEY) * dble(aa **&
+ 2) * dble(bb ** 2) + dble(2 * bb ** 4 * (nu * EEY + 2 * GXY))) *&
+EE - dble(4 * nu ** 2 * EEY * GXY * (aa ** 4 + bb ** 4))) * s **&
+2 + 0.38D2 / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE&
+ - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * c ** 2 + (EE&
+** 2 * dble(aa ** 4) + EE * dble(EEY) * dble(bb ** 4)) * s ** 4 -&
+dble(bb ** 2) * ((dble(nu * EEY) + 0.14D2 / 0.5D1 * dble(GXY)) *&
+EE - 0.14D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)) * dble(&
+aa ** 2)) / (-dble(EEY * nu ** 2) + EE) / dble(aa ** 3) / dble(bb&
+ ** 3) / 0.24D2
+
+ke(7,2) = -t ** 3 * ((-0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) *&
+(-dble(EEY * nu ** 2) + EE) + EE ** 2 * dble(bb ** 2)) * c ** 4 -&
+0.2D1 * dble(aa) * s * dble(bb) * (EE ** 2 + dble(-2 * nu * EEY -&
+4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * c ** 3 + ((-0.2D1&
+ / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE * dble(aa ** 2)&
++ 0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2&
+* EEY * GXY * nu ** 2))) * s ** 2 + 0.8D1 / 0.5D1 * dble(GXY) * dble(&
+aa ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2 + 0.2D1 * dble(&
+bb) * (EE * dble(EEY) * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE +&
+dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * c + EE * dble(EEY&
+) * s ** 4 * dble(bb ** 2) - 0.2D1 / 0.5D1 * dble(GXY) * dble(aa **&
+ 2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY * nu ** 2) + EE)&
+/ dble(aa ** 2) / dble(bb) / 0.24D2
+ke(7,3) = -t ** 3 * ((-0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) *&
+(-dble(EEY * nu ** 2) + EE) + dble(aa ** 2) * EE * dble(EEY)) * c&
+** 4 - 0.4D1 * dble(aa) * s * (((dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) + dble(2 * GXY)) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(&
+bb) * c ** 3 + ((-0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY&
+)) * EE * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY) * EE -&
+dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2 + 0.8D1&
+/ 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE))&
+* c ** 2 - 0.2D1 * (EE ** 2 * s ** 2 + dble(-nu * EEY - 2 * GXY)&
+* EE + dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * dble(bb) *&
+c + EE ** 2 * s ** 4 * dble(aa ** 2) - 0.2D1 / 0.5D1 * dble(GXY) *&
+dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY * nu **&
+2) + EE) / dble(bb ** 2) / dble(aa) / 0.24D2
+ke(7,4) = -t ** 3 * ((-EE ** 2 * dble(bb ** 4) / 0.2D1 + (dble(aa&
+** 2 * EEY) + 0.19D2 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb&
+** 2)) * dble(aa ** 2) * EE - 0.38D2 / 0.5D1 * dble(EEY) * dble(GXY&
+) * dble(aa ** 2) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((0.19D2&
+ / 0.10D2 * EE ** 2 * dble(aa ** 2) * dble(bb ** 2) + (dble((&
+2 * nu * EEY + 4 * GXY) * aa ** 4) + 0.19D2 / 0.10D2 * dble(EEY) *&
+dble(aa ** 2) * dble(bb ** 2) - dble(bb ** 4 * (nu * EEY + 2 * GXY&
+))) * EE - 0.4D1 * dble(EEY) * (dble(aa ** 4) - dble(bb ** 4) / 0.2D1&
+) * dble(nu ** 2) * dble(GXY)) * s ** 2 - 0.19D2 / 0.5D1 * dble(&
+bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY *&
+nu ** 2)) * dble(aa ** 2)) * c ** 2 + EE * (EE * dble(aa ** 4) -&
+dble(bb ** 4 * EEY) / 0.2D1) * s ** 4 + dble(bb ** 2) * ((dble(nu&
+* EEY) + 0.14D2 / 0.5D1 * dble(GXY)) * EE - 0.14D2 / 0.5D1 * dble(&
+EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2) / 0.2D1) / (-dble(&
+EEY * nu ** 2) + EE) / dble(aa ** 3) / dble(bb ** 3) / 0.12D2
+ke(7,5) = -((0.14D2 / 0.5D1 * (dble(-nu * EEY - 2 * GXY) * EE + dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa ** 2) + EE ** 2 * dble(bb **&
+ 2)) * c ** 4 + 0.2D1 * dble(bb) * dble(aa) * s * (EE ** 2 + 0.2D1&
+ * dble(-nu * EEY - 2 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)&
+) * c ** 3 + ((-0.7D1 / 0.5D1 * EE * (EE + dble(EEY)) * dble(aa **&
+2) + 0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(&
+2 * EEY * GXY * nu ** 2))) * s ** 2 + 0.14D2 / 0.5D1 * (dble(nu&
+* EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa **&
+ 2)) * c ** 2 - 0.2D1 * dble(bb) * (EE * dble(EEY) * s ** 2 + dble(&
+-nu * EEY - 2 * GXY) * EE + dble(2 * EEY * GXY * nu ** 2)) * dble(&
+aa) * s * c + EE * dble(EEY) * s ** 4 * dble(bb ** 2) - ((dble(nu&
+ * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 / 0.5D1 * dble(&
+EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2)) * t ** 3 / (-dble(&
+EEY * nu ** 2) + EE) / dble(aa ** 2) / dble(bb) / 0.24D2
+ke(7,6) = -t ** 3 * (((dble(aa ** 2 * EEY) + 0.4D1 / 0.5D1 * dble(&
+GXY) * dble(bb ** 2)) * EE - 0.4D1 / 0.5D1 * dble(EEY) * dble(GXY)&
+* dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((EE ** 2 * dble(bb **&
+ 2) / 0.5D1 + (-0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(bb ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY)))&
+* EE - dble(4 * EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 - 0.4D1 /&
+0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE))&
+* c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) + dble(GXY) * dble(bb&
+** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY * nu **&
+2) + EE) / dble(bb ** 2) / dble(aa) / 0.12D2
+
+ke(7,7) = ((EE ** 2 * dble(bb ** 4) + (dble(aa ** 2 * EEY) + 0.19D2&
+ / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb ** 2)) * dble(aa **&
+2) * EE - 0.38D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(aa ** 2)&
+* dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((0.19D2 / 0.10D2 * EE&
+** 2 * dble(aa ** 2) * dble(bb ** 2) + (dble((2 * nu * EEY + 4 *&
+GXY) * aa ** 4) + 0.19D2 / 0.10D2 * dble(EEY) * dble(aa ** 2) * dble(&
+bb ** 2) + dble(2 * bb ** 4 * (nu * EEY + 2 * GXY))) * EE - dble(&
+4 * nu ** 2 * EEY * GXY * (aa ** 4 + bb ** 4))) * s ** 2 - 0.19D2&
+ / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * c ** 2 + (EE ** 2 * dble(&
+aa ** 4) + EE * dble(EEY) * dble(bb ** 4)) * s ** 4 + dble(bb&
+** 2) * ((dble(nu * EEY) + 0.14D2 / 0.5D1 * dble(GXY)) * EE - 0.14D2&
+ / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2&
+) / 0.2D1) * t ** 3 / (-dble(EEY * nu ** 2) + EE) / dble(aa ** 3)&
+/ dble(bb ** 3) / 0.12D2
+
+ke(7,8) = -((EE ** 2 * dble(bb ** 2) + 0.7D1 / 0.5D1 * dble(aa **&
+2) * dble(nu * EEY + 2 * GXY) * EE - 0.14D2 / 0.5D1 * dble(EEY) *&
+dble(GXY) * dble(aa ** 2) * dble(nu ** 2)) * c ** 4 + ((0.7D1 / 0.10D2&
+ * EE ** 2 * dble(aa ** 2) + (0.7D1 / 0.10D2 * dble(aa ** 2) *&
+dble(EEY) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2)) * EE - dble(&
+4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 - 0.7D1 / 0.5D1 * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(&
+aa ** 2)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) +&
+((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 / 0.5D1&
+* dble(EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2) / 0.2D1)&
+* t ** 3 / (-dble(EEY * nu ** 2) + EE) / dble(aa ** 2) / dble(bb)&
+/ 0.12D2
+ke(7,9) = -(((0.7D1 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb **&
+ 2) + dble(aa ** 2 * EEY)) * EE - 0.14D2 / 0.5D1 * dble(EEY) * dble(&
+GXY) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((0.7D1 / 0.10D2&
+ * EE ** 2 * dble(bb ** 2) + (0.7D1 / 0.10D2 * dble(EEY) * dble(&
+bb ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY))) * EE - dble(4&
+* EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 - 0.7D1 / 0.5D1 * dble(&
+bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY *&
+nu ** 2))) * c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) + dble(bb **&
+ 2) * ((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1&
+/ 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)) / 0.2D1) * t ** 3&
+/ (-dble(EEY * nu ** 2) + EE) / dble(bb ** 2) / dble(aa) / 0.12D2
+
+ke(7,10) = ((-0.2D1 * EE ** 2 * dble(bb ** 4) + dble(aa ** 2) * (dble(&
+aa ** 2 * EEY) - 0.38D2 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb&
+ ** 2)) * EE + 0.76D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((-0.19D2 /&
+0.5D1 * EE ** 2 * dble(aa ** 2) * dble(bb ** 2) + (dble((2 * nu *&
+EEY + 4 * GXY) * aa ** 4) - 0.19D2 / 0.5D1 * dble(EEY) * dble(aa **&
+ 2) * dble(bb ** 2) - dble(4 * bb ** 4 * (nu * EEY + 2 * GXY))) *&
+EE - dble(4 * nu ** 2 * EEY * GXY * (aa ** 4 - 2 * bb ** 4))) * s&
+** 2 + 0.38D2 / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY)&
+* EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * c ** 2 +&
+(EE ** 2 * dble(aa ** 4) - 0.2D1 * EE * dble(EEY) * dble(bb ** 4)&
+) * s ** 4 - dble(bb ** 2) * ((dble(nu * EEY) + 0.14D2 / 0.5D1 * dble(&
+GXY)) * EE - 0.14D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu&
+** 2)) * dble(aa ** 2)) * t ** 3 / (-dble(EEY * nu ** 2) + EE) / dble(&
+aa ** 3) / dble(bb ** 3) / 0.24D2
+
+ke(7,11) = -t ** 3 * ((-0.4D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(nu ** 2) + EE ** 2 * dble(bb ** 2) + 0.4D1 / 0.5D1&
+ * EE * dble(GXY) * dble(aa ** 2)) * c ** 4 + ((EE ** 2 * dble(&
+aa ** 2) / 0.5D1 + (-0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) *&
+dble(EEY) * dble(aa ** 2) + dble(2 * (nu * EEY + 2 * GXY) * bb **&
+2)) * EE - dble(4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 - 0.4D1&
+ / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE&
+)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) + dble(GXY)&
+* dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY&
+ * nu ** 2) + EE) / dble(aa ** 2) / dble(bb) / 0.12D2
+ke(7,12) = -t ** 3 * ((0.14D2 / 0.5D1 * (dble(-nu * EEY - 2 * GXY)&
+* EE + dble(2 * EEY * GXY * nu ** 2)) * dble(bb ** 2) + dble(aa **&
+ 2) * EE * dble(EEY)) * c ** 4 + 0.4D1 * dble(aa) * s * (((dble(nu&
+) - 0.1D1 / 0.2D1) * dble(EEY) + dble(2 * GXY)) * EE - dble(2 * EEY&
+ * GXY * nu ** 2)) * dble(bb) * c ** 3 + ((-0.7D1 / 0.5D1 * EE *&
+(EE + dble(EEY)) * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY&
+) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s **&
+2 + 0.14D2 / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE&
+ - dble(2 * EEY * GXY * nu ** 2))) * c ** 2 + 0.2D1 * (EE ** 2 *&
+s ** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(2 * EEY * GXY * nu&
+** 2)) * dble(aa) * s * dble(bb) * c + EE ** 2 * s ** 4 * dble(aa&
+** 2) - dble(bb ** 2) * ((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY&
+)) * EE - 0.2D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)))&
+/ (-dble(EEY * nu ** 2) + EE) / dble(bb ** 2) / dble(aa) / 0.24D2
+ke(8,1) = t ** 3 * ((-0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) *&
+(-dble(EEY * nu ** 2) + EE) + EE ** 2 * dble(bb ** 2)) * c ** 4 -&
+0.2D1 * dble(aa) * s * dble(bb) * (EE ** 2 + dble(-2 * nu * EEY -&
+4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * c ** 3 + ((-0.2D1&
+/ 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE * dble(aa ** 2) +&
+0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 *&
+EEY * GXY * nu ** 2))) * s ** 2 + 0.8D1 / 0.5D1 * dble(GXY) * dble(&
+aa ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2 + 0.2D1 * dble(&
+bb) * (EE * dble(EEY) * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE +&
+dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * c + EE * dble(EEY)&
+* s ** 4 * dble(bb ** 2) - 0.2D1 / 0.5D1 * dble(GXY) * dble(aa **&
+2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY * nu ** 2) + EE) /&
+dble(aa ** 2) / dble(bb) / 0.24D2
+ke(8,2) = t ** 3 * ((0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) * (&
+-dble(EEY * nu ** 2) + EE) + EE ** 2 * dble(bb ** 2)) * c ** 4 - 0.3D1&
+ * dble(aa) * s * dble(bb) * (EE ** 2 + dble(-2 * nu * EEY - 4&
+* GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * c ** 3 + ((0.2D1 /&
+0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE * dble(aa ** 2) + 0.2D1&
+ * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY&
+ * GXY * nu ** 2))) * s ** 2 - 0.8D1 / 0.5D1 * dble(GXY) * dble(&
+aa ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2 + 0.3D1 * dble(bb&
+) * (EE * dble(EEY) * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa) * s * c + EE * dble(EEY) *&
+s ** 4 * dble(bb ** 2) + 0.2D1 / 0.5D1 * dble(GXY) * dble(aa ** 2&
+) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY * nu ** 2) + EE) / dble(&
+aa) / dble(bb) / 0.36D2
+ke(8,3) = -t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1&
++ 2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2&
+- 4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (&
+-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(8,4) = -((0.14D2 / 0.5D1 * (dble(-nu * EEY - 2 * GXY) * EE + dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa ** 2) + EE ** 2 * dble(bb **&
+ 2)) * c ** 4 - 0.2D1 * dble(bb) * dble(aa) * s * (EE ** 2 + 0.2D1&
+ * dble(-nu * EEY - 2 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)&
+) * c ** 3 + ((-0.7D1 / 0.5D1 * EE * (EE + dble(EEY)) * dble(aa **&
+2) + 0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(&
+2 * EEY * GXY * nu ** 2))) * s ** 2 + 0.14D2 / 0.5D1 * (dble(nu&
+* EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa **&
+ 2)) * c ** 2 + 0.2D1 * dble(bb) * (EE * dble(EEY) * s ** 2 + dble(&
+-nu * EEY - 2 * GXY) * EE + dble(2 * EEY * GXY * nu ** 2)) * dble(&
+aa) * s * c + EE * dble(EEY) * s ** 4 * dble(bb ** 2) - ((dble(nu&
+ * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 / 0.5D1 * dble(&
+EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2)) * t ** 3 / (-dble(&
+EEY * nu ** 2) + EE) / dble(aa ** 2) / dble(bb) / 0.24D2
+
+ke(8,5) = t ** 3 * ((0.16D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(nu ** 2) + EE ** 2 * dble(bb ** 2) - 0.16D2 / 0.5D1&
+ * EE * dble(GXY) * dble(aa ** 2)) * c ** 4 + 0.2D1 * ((-0.2D1 /&
+0.5D1 * EE ** 2 * dble(aa ** 2) + (0.4D1 / 0.5D1 * (dble(nu) - 0.1D1&
+ / 0.2D1) * dble(EEY) * dble(aa ** 2) + dble((nu * EEY + 2 * GXY&
+) * bb ** 2)) * EE - dble(2 * EEY * GXY * bb ** 2 * nu ** 2)) * s&
+** 2 + 0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu&
+ ** 2) + EE)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2)&
+- 0.4D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu ** 2&
+) + EE)) / (-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.18D2
+
+ke(8,6) = t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1 +&
+2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2 -&
+4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (-&
+dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(8,7) = -((EE ** 2 * dble(bb ** 2) + 0.7D1 / 0.5D1 * dble(aa **&
+2) * dble(nu * EEY + 2 * GXY) * EE - 0.14D2 / 0.5D1 * dble(EEY) *&
+dble(GXY) * dble(aa ** 2) * dble(nu ** 2)) * c ** 4 + ((0.7D1 / 0.10D2&
+ * EE ** 2 * dble(aa ** 2) + (0.7D1 / 0.10D2 * dble(aa ** 2) *&
+dble(EEY) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2)) * EE - dble(&
+4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 - 0.7D1 / 0.5D1 * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(&
+aa ** 2)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) +&
+((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 / 0.5D1&
+* dble(EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2) / 0.2D1)&
+* t ** 3 / (-dble(EEY * nu ** 2) + EE) / dble(aa ** 2) / dble(bb)&
+/ 0.12D2
+
+ke(8,8) = ((0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY&
+* nu ** 2) + EE) + EE ** 2 * dble(bb ** 2)) * c ** 4 - 0.3D1 / 0.4D1&
+ * dble(aa) * s * dble(bb) * (EE ** 2 + dble(-2 * nu * EEY - 4&
+* GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * c ** 3 + ((0.2D1 /&
+0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE * dble(aa ** 2) + 0.2D1&
+ * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY&
+ * GXY * nu ** 2))) * s ** 2 - 0.8D1 / 0.5D1 * dble(GXY) * dble(aa&
+ ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2 + 0.3D1 / 0.4D1 *&
+dble(bb) * (EE * dble(EEY) * s ** 2 + dble(-nu * EEY - 2 * GXY) *&
+EE + dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * c + EE * dble(&
+EEY) * s ** 4 * dble(bb ** 2) + 0.2D1 / 0.5D1 * dble(GXY) * dble(&
+aa ** 2) * (-dble(EEY * nu ** 2) + EE)) * t ** 3 / (-dble(EEY * nu&
+** 2) + EE) / dble(aa) / dble(bb) / 0.9D1
+
+ke(8,9) = -t ** 3 * (-0.12D2 * EE * dble(EEY) * c ** 4 * dble(aa)&
+* dble(bb) * dble(nu) + (EE ** 2 * dble(bb ** 2) + dble(((-1 + 2 *&
+nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2 - 4 *&
+GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb) *&
+(aa + bb))) * s * c ** 3 - 0.6D1 * dble(aa) * ((EE ** 2 + dble(EEY&
+- 4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * s ** 2 - 0.2D1&
+* EE * dble(EEY) * dble(nu)) * dble(bb) * c ** 2 + ((EE ** 2 * dble(&
+aa ** 2) - EE * dble(EEY) * dble(bb ** 2)) * s ** 2 - dble(aa +&
+bb) * dble(aa - bb) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY&
+ * GXY * nu ** 2))) * s * c - 0.6D1 * EE * dble(EEY) * dble(aa)&
+* dble(bb) * dble(nu)) / (-dble(EEY * nu ** 2) + EE) / dble(aa) /&
+dble(bb) / 0.72D2
+ke(8,10) = t ** 3 * ((-0.4D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(nu ** 2) + EE ** 2 * dble(bb ** 2) + 0.4D1 / 0.5D1&
+ * EE * dble(GXY) * dble(aa ** 2)) * c ** 4 + ((EE ** 2 * dble(aa&
+ ** 2) / 0.5D1 + (-0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(aa ** 2) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2&
+)) * EE - dble(4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 - 0.4D1&
+ / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE&
+)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) + dble(GXY)&
+* dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY&
+ * nu ** 2) + EE) / dble(aa ** 2) / dble(bb) / 0.12D2
+ke(8,11) = t ** 3 * ((0.4D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(nu ** 2) + EE ** 2 * dble(bb ** 2) - 0.4D1 / 0.5D1&
+ * EE * dble(GXY) * dble(aa ** 2)) * c ** 4 + ((-EE ** 2 * dble(aa&
+ ** 2) / 0.5D1 + (0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(aa ** 2) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2)&
+) * EE - dble(4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 + 0.4D1&
+/ 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE)&
+) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) - dble(GXY) *&
+dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY&
+* nu ** 2) + EE) / dble(aa) / dble(bb) / 0.18D2
+ke(8,12) = t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1&
++ 2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2&
+- 4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (&
+-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(9,1) = t ** 3 * ((-0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) *&
+(-dble(EEY * nu ** 2) + EE) + dble(aa ** 2) * EE * dble(EEY)) * c&
+** 4 - 0.4D1 * dble(aa) * s * (((dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) + dble(2 * GXY)) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(&
+bb) * c ** 3 + ((-0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)&
+) * EE * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY) * EE -&
+dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2 + 0.8D1 /&
+0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE))&
+* c ** 2 - 0.2D1 * (EE ** 2 * s ** 2 + dble(-nu * EEY - 2 * GXY) *&
+EE + dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * dble(bb) * c&
++ EE ** 2 * s ** 4 * dble(aa ** 2) - 0.2D1 / 0.5D1 * dble(GXY) *&
+dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY * nu **&
+2) + EE) / dble(bb ** 2) / dble(aa) / 0.24D2
+ke(9,2) = -t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1&
++ 2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2&
+- 4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (&
+-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(9,3) = ((0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY&
+* nu ** 2) + EE) + dble(aa ** 2) * EE * dble(EEY)) * c ** 4 - 0.6D1&
+ * dble(aa) * s * (((dble(nu) - 0.1D1 / 0.2D1) * dble(EEY) + dble(&
+2 * GXY)) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(bb) * c **&
+ 3 + ((0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE * dble(&
+bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY&
+ * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2 - 0.8D1 / 0.5D1 * dble(&
+GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2 -&
+0.3D1 * (EE ** 2 * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa) * s * dble(bb) * c + EE ** 2&
+* s ** 4 * dble(aa ** 2) + 0.2D1 / 0.5D1 * dble(GXY) * dble(bb **&
+2) * (-dble(EEY * nu ** 2) + EE)) * t ** 3 / (-dble(EEY * nu ** 2)&
++ EE) / dble(aa) / dble(bb) / 0.36D2
+ke(9,4) = t ** 3 * (((dble(aa ** 2 * EEY) + 0.4D1 / 0.5D1 * dble(GXY&
+) * dble(bb ** 2)) * EE - 0.4D1 / 0.5D1 * dble(EEY) * dble(GXY)&
+* dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((EE ** 2 * dble(bb **&
+2) / 0.5D1 + (-0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(bb ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY))) *&
+EE - dble(4 * EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 - 0.4D1 /&
+0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) *&
+c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) + dble(GXY) * dble(bb **&
+ 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY * nu ** 2&
+) + EE) / dble(bb ** 2) / dble(aa) / 0.12D2
+ke(9,5) = t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1 +&
+2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2 -&
+4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (-&
+dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(9,6) = t ** 3 * (((dble(aa ** 2 * EEY) - 0.4D1 / 0.5D1 * dble(GXY&
+) * dble(bb ** 2)) * EE + 0.4D1 / 0.5D1 * dble(EEY) * dble(GXY)&
+* dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((-EE ** 2 * dble(bb **&
+ 2) / 0.5D1 + (0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(bb ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY))) *&
+EE - dble(4 * EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 + 0.4D1 /&
+0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) *&
+c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) - dble(GXY) * dble(bb **&
+ 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY * nu ** 2&
+) + EE) / dble(aa) / dble(bb) / 0.18D2
+ke(9,7) = -(((0.7D1 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb **&
+ 2) + dble(aa ** 2 * EEY)) * EE - 0.14D2 / 0.5D1 * dble(EEY) * dble(&
+GXY) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((0.7D1 / 0.10D2&
+ * EE ** 2 * dble(bb ** 2) + (0.7D1 / 0.10D2 * dble(EEY) * dble(&
+bb ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY))) * EE - dble(4&
+* EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 - 0.7D1 / 0.5D1 * dble(&
+bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY *&
+nu ** 2))) * c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) + dble(bb **&
+ 2) * ((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1&
+/ 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)) / 0.2D1) * t ** 3&
+/ (-dble(EEY * nu ** 2) + EE) / dble(bb ** 2) / dble(aa) / 0.12D2
+ke(9,8) = -t ** 3 * (-0.12D2 * EE * dble(EEY) * c ** 4 * dble(aa)&
+* dble(bb) * dble(nu) + (EE ** 2 * dble(bb ** 2) + dble(((-1 + 2 *&
+nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2 - 4 *&
+GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb) *&
+(aa + bb))) * s * c ** 3 - 0.6D1 * dble(aa) * ((EE ** 2 + dble(EEY&
+- 4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * s ** 2 - 0.2D1&
+* EE * dble(EEY) * dble(nu)) * dble(bb) * c ** 2 + ((EE ** 2 * dble(&
+aa ** 2) - EE * dble(EEY) * dble(bb ** 2)) * s ** 2 - dble(aa +&
+bb) * dble(aa - bb) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY&
+ * GXY * nu ** 2))) * s * c - 0.6D1 * EE * dble(EEY) * dble(aa)&
+* dble(bb) * dble(nu)) / (-dble(EEY * nu ** 2) + EE) / dble(aa) /&
+dble(bb) / 0.72D2
+ke(9,9) = t ** 3 * ((0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) * (&
+-dble(EEY * nu ** 2) + EE) + dble(aa ** 2) * EE * dble(EEY)) * c **&
+ 4 - 0.3D1 / 0.2D1 * dble(aa) * s * (((dble(nu) - 0.1D1 / 0.2D1)&
+* dble(EEY) + dble(2 * GXY)) * EE - dble(2 * EEY * GXY * nu ** 2))&
+* dble(bb) * c ** 3 + ((0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1)&
+* EEY)) * EE * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY) *&
+EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2 - 0.8D1&
+ / 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) +&
+EE)) * c ** 2 - 0.3D1 / 0.4D1 * (EE ** 2 * s ** 2 + dble(-nu * EEY&
+ - 2 * GXY) * EE + dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s&
+* dble(bb) * c + EE ** 2 * s ** 4 * dble(aa ** 2) + 0.2D1 / 0.5D1&
+* dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(&
+EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.9D1
+ke(9,10) = -t ** 3 * ((0.14D2 / 0.5D1 * (dble(-nu * EEY - 2 * GXY)&
+* EE + dble(2 * EEY * GXY * nu ** 2)) * dble(bb ** 2) + dble(aa **&
+ 2) * EE * dble(EEY)) * c ** 4 - 0.4D1 * dble(aa) * s * (((dble(nu&
+) - 0.1D1 / 0.2D1) * dble(EEY) + dble(2 * GXY)) * EE - dble(2 * EEY&
+ * GXY * nu ** 2)) * dble(bb) * c ** 3 + ((-0.7D1 / 0.5D1 * EE *&
+(EE + dble(EEY)) * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY&
+) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s **&
+2 + 0.14D2 / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE&
+ - dble(2 * EEY * GXY * nu ** 2))) * c ** 2 - 0.2D1 * (EE ** 2 *&
+s ** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(2 * EEY * GXY * nu&
+** 2)) * dble(aa) * s * dble(bb) * c + EE ** 2 * s ** 4 * dble(aa&
+** 2) - dble(bb ** 2) * ((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY&
+)) * EE - 0.2D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)))&
+/ (-dble(EEY * nu ** 2) + EE) / dble(bb ** 2) / dble(aa) / 0.24D2
+ke(9,11) = t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1&
++ 2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2&
+- 4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (&
+-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(9,12) = t ** 3 * (((dble(aa ** 2 * EEY) - 0.16D2 / 0.5D1 * dble(&
+GXY) * dble(bb ** 2)) * EE + 0.16D2 / 0.5D1 * dble(EEY) * dble(GXY&
+) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + 0.2D1 * ((-0.2D1 /&
+0.5D1 * EE ** 2 * dble(bb ** 2) + (0.4D1 / 0.5D1 * (dble(nu) - 0.1D1&
+ / 0.2D1) * dble(EEY) * dble(bb ** 2) + dble(aa ** 2 * (nu * EEY&
++ 2 * GXY))) * EE - dble(2 * EEY * GXY * aa ** 2 * nu ** 2)) * s&
+** 2 + 0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu&
+** 2) + EE)) * c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) - 0.4D1&
+/ 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE))&
+/ (-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.18D2
+ke(10,1) = -t ** 3 * ((-EE ** 2 * dble(bb ** 4) / 0.2D1 + (dble(aa&
+** 2 * EEY) + 0.19D2 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb&
+** 2)) * dble(aa ** 2) * EE - 0.38D2 / 0.5D1 * dble(EEY) * dble(GXY&
+) * dble(aa ** 2) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((&
+0.19D2 / 0.10D2 * EE ** 2 * dble(aa ** 2) * dble(bb ** 2) + (dble(&
+(2 * nu * EEY + 4 * GXY) * aa ** 4) + 0.19D2 / 0.10D2 * dble(EEY)&
+* dble(aa ** 2) * dble(bb ** 2) - dble(bb ** 4 * (nu * EEY + 2 * GXY&
+))) * EE - 0.4D1 * dble(EEY) * (dble(aa ** 4) - dble(bb ** 4) /&
+0.2D1) * dble(nu ** 2) * dble(GXY)) * s ** 2 - 0.19D2 / 0.5D1 * dble(&
+bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY&
+* nu ** 2)) * dble(aa ** 2)) * c ** 2 + EE * (EE * dble(aa ** 4) -&
+dble(bb ** 4 * EEY) / 0.2D1) * s ** 4 + dble(bb ** 2) * ((dble(nu&
+* EEY) + 0.14D2 / 0.5D1 * dble(GXY)) * EE - 0.14D2 / 0.5D1 * dble(&
+EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2) / 0.2D1) / (-dble(&
+EEY * nu ** 2) + EE) / dble(aa ** 3) / dble(bb ** 3) / 0.12D2
+ke(10,2) = ((0.14D2 / 0.5D1 * (dble(-nu * EEY - 2 * GXY) * EE + dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa ** 2) + EE ** 2 * dble(bb **&
+ 2)) * c ** 4 - 0.2D1 * dble(bb) * dble(aa) * s * (EE ** 2 + 0.2D1&
+ * dble(-nu * EEY - 2 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)&
+) * c ** 3 + ((-0.7D1 / 0.5D1 * EE * (EE + dble(EEY)) * dble(aa **&
+2) + 0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(&
+2 * EEY * GXY * nu ** 2))) * s ** 2 + 0.14D2 / 0.5D1 * (dble(nu&
+* EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa **&
+ 2)) * c ** 2 + 0.2D1 * dble(bb) * (EE * dble(EEY) * s ** 2 + dble(&
+-nu * EEY - 2 * GXY) * EE + dble(2 * EEY * GXY * nu ** 2)) * dble(&
+aa) * s * c + EE * dble(EEY) * s ** 4 * dble(bb ** 2) - ((dble(nu&
+ * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 / 0.5D1 * dble(&
+EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2)) * t ** 3 / (-dble(&
+EEY * nu ** 2) + EE) / dble(aa ** 2) / dble(bb) / 0.24D2
+ke(10,3) = -t ** 3 * (((dble(aa ** 2 * EEY) + 0.4D1 / 0.5D1 * dble(&
+GXY) * dble(bb ** 2)) * EE - 0.4D1 / 0.5D1 * dble(EEY) * dble(GXY&
+) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((EE ** 2 * dble(bb&
+** 2) / 0.5D1 + (-0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(bb ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY)))&
+* EE - dble(4 * EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 - 0.4D1&
+/ 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE))&
+* c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) + dble(GXY) * dble(bb&
+** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY * nu **&
+2) + EE) / dble(bb ** 2) / dble(aa) / 0.12D2
+ke(10,4) = -t ** 3 * ((EE ** 2 * dble(bb ** 4) + dble(aa ** 2) * (&
+dble(aa ** 2 * EEY) - 0.38D2 / 0.5D1 * dble(nu * EEY + 2 * GXY) *&
+dble(bb ** 2)) * EE + 0.76D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((-0.19D2 /&
+0.5D1 * EE ** 2 * dble(aa ** 2) * dble(bb ** 2) + (dble((2 * nu *&
+EEY + 4 * GXY) * aa ** 4) - 0.19D2 / 0.5D1 * dble(EEY) * dble(aa&
+** 2) * dble(bb ** 2) + dble(2 * bb ** 4 * (nu * EEY + 2 * GXY)))&
+* EE - dble(4 * nu ** 2 * EEY * GXY * (aa ** 4 + bb ** 4))) * s **&
+2 + 0.38D2 / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) *&
+EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * c ** 2 + (EE&
+ ** 2 * dble(aa ** 4) + EE * dble(EEY) * dble(bb ** 4)) * s ** 4&
+- dble(bb ** 2) * ((dble(nu * EEY) + 0.14D2 / 0.5D1 * dble(GXY)) *&
+EE - 0.14D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)) * dble(&
+aa ** 2)) / (-dble(EEY * nu ** 2) + EE) / dble(aa ** 3) / dble(&
+bb ** 3) / 0.24D2
+ke(10,5) = t ** 3 * ((-0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) *&
+(-dble(EEY * nu ** 2) + EE) + EE ** 2 * dble(bb ** 2)) * c ** 4 +&
+0.2D1 * dble(aa) * s * dble(bb) * (EE ** 2 + dble(-2 * nu * EEY -&
+4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * c ** 3 + ((-0.2D1&
+ / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE * dble(aa ** 2)&
++ 0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2&
+* EEY * GXY * nu ** 2))) * s ** 2 + 0.8D1 / 0.5D1 * dble(GXY) * dble(&
+aa ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2 - 0.2D1 * dble(&
+bb) * (EE * dble(EEY) * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE +&
+dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * c + EE * dble(EEY&
+) * s ** 4 * dble(bb ** 2) - 0.2D1 / 0.5D1 * dble(GXY) * dble(aa **&
+ 2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY * nu ** 2) + EE)&
+/ dble(aa ** 2) / dble(bb) / 0.24D2
+ke(10,6) = -((-0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(&
+EEY * nu ** 2) + EE) + dble(aa ** 2) * EE * dble(EEY)) * c ** 4 +&
+0.4D1 * dble(aa) * s * (((dble(nu) - 0.1D1 / 0.2D1) * dble(EEY) +&
+dble(2 * GXY)) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(bb) *&
+c ** 3 + ((-0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE&
+* dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY) * EE - dble(2&
+* EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2 + 0.8D1 / 0.5D1&
+* dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) * c **&
+2 + 0.2D1 * (EE ** 2 * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa) * s * dble(bb) * c + EE **&
+ 2 * s ** 4 * dble(aa ** 2) - 0.2D1 / 0.5D1 * dble(GXY) * dble(bb&
+** 2) * (-dble(EEY * nu ** 2) + EE)) * t ** 3 / (-dble(EEY * nu **&
+ 2) + EE) / dble(bb ** 2) / dble(aa) / 0.24D2
+
+ke(10,7) = ((-0.2D1 * EE ** 2 * dble(bb ** 4) + dble(aa ** 2) * (dble(&
+aa ** 2 * EEY) - 0.38D2 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb&
+ ** 2)) * EE + 0.76D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((-0.19D2 /&
+0.5D1 * EE ** 2 * dble(aa ** 2) * dble(bb ** 2) + (dble((2 * nu *&
+EEY + 4 * GXY) * aa ** 4) - 0.19D2 / 0.5D1 * dble(EEY) * dble(aa **&
+ 2) * dble(bb ** 2) - dble(4 * bb ** 4 * (nu * EEY + 2 * GXY))) *&
+EE - dble(4 * nu ** 2 * EEY * GXY * (aa ** 4 - 2 * bb ** 4))) * s&
+** 2 + 0.38D2 / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY)&
+* EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * c ** 2 +&
+(EE ** 2 * dble(aa ** 4) - 0.2D1 * EE * dble(EEY) * dble(bb ** 4)&
+) * s ** 4 - dble(bb ** 2) * ((dble(nu * EEY) + 0.14D2 / 0.5D1 * dble(&
+GXY)) * EE - 0.14D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu&
+** 2)) * dble(aa ** 2)) * t ** 3 / (-dble(EEY * nu ** 2) + EE) / dble(&
+aa ** 3) / dble(bb ** 3) / 0.24D2
+
+ke(10,8) = t ** 3 * ((-0.4D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(nu ** 2) + EE ** 2 * dble(bb ** 2) + 0.4D1 / 0.5D1&
+ * EE * dble(GXY) * dble(aa ** 2)) * c ** 4 + ((EE ** 2 * dble(aa&
+ ** 2) / 0.5D1 + (-0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(aa ** 2) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2&
+)) * EE - dble(4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 - 0.4D1&
+ / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE&
+)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) + dble(GXY)&
+* dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY&
+ * nu ** 2) + EE) / dble(aa ** 2) / dble(bb) / 0.12D2
+ke(10,9) = -t ** 3 * ((0.14D2 / 0.5D1 * (dble(-nu * EEY - 2 * GXY)&
+* EE + dble(2 * EEY * GXY * nu ** 2)) * dble(bb ** 2) + dble(aa **&
+ 2) * EE * dble(EEY)) * c ** 4 - 0.4D1 * dble(aa) * s * (((dble(nu&
+) - 0.1D1 / 0.2D1) * dble(EEY) + dble(2 * GXY)) * EE - dble(2 * EEY&
+ * GXY * nu ** 2)) * dble(bb) * c ** 3 + ((-0.7D1 / 0.5D1 * EE *&
+(EE + dble(EEY)) * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY&
+) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s **&
+2 + 0.14D2 / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE&
+ - dble(2 * EEY * GXY * nu ** 2))) * c ** 2 - 0.2D1 * (EE ** 2 *&
+s ** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(2 * EEY * GXY * nu&
+** 2)) * dble(aa) * s * dble(bb) * c + EE ** 2 * s ** 4 * dble(aa&
+** 2) - dble(bb ** 2) * ((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY&
+)) * EE - 0.2D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)))&
+/ (-dble(EEY * nu ** 2) + EE) / dble(bb ** 2) / dble(aa) / 0.24D2
+ke(10,10) = ((EE ** 2 * dble(bb ** 4) + (dble(aa ** 2 * EEY) + 0.19D2&
+ / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb ** 2)) * dble(aa&
+** 2) * EE - 0.38D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(aa ** 2&
+) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((0.19D2 / 0.10D2 *&
+EE ** 2 * dble(aa ** 2) * dble(bb ** 2) + (dble((2 * nu * EEY + 4&
+* GXY) * aa ** 4) + 0.19D2 / 0.10D2 * dble(EEY) * dble(aa ** 2) *&
+dble(bb ** 2) + dble(2 * bb ** 4 * (nu * EEY + 2 * GXY))) * EE - dble(&
+4 * nu ** 2 * EEY * GXY * (aa ** 4 + bb ** 4))) * s ** 2 - 0.19D2&
+ / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * c ** 2 + (EE ** 2 *&
+dble(aa ** 4) + EE * dble(EEY) * dble(bb ** 4)) * s ** 4 + dble(bb&
+ ** 2) * ((dble(nu * EEY) + 0.14D2 / 0.5D1 * dble(GXY)) * EE - 0.14D2&
+ / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa **&
+2) / 0.2D1) * t ** 3 / (-dble(EEY * nu ** 2) + EE) / dble(aa ** 3&
+) / dble(bb ** 3) / 0.12D2
+
+ke(10,11) = ((EE ** 2 * dble(bb ** 2) + 0.7D1 / 0.5D1 * dble(aa **&
+2) * dble(nu * EEY + 2 * GXY) * EE - 0.14D2 / 0.5D1 * dble(EEY) *&
+dble(GXY) * dble(aa ** 2) * dble(nu ** 2)) * c ** 4 + ((0.7D1 / 0.10D2&
+ * EE ** 2 * dble(aa ** 2) + (0.7D1 / 0.10D2 * dble(aa ** 2)&
+* dble(EEY) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2)) * EE - dble(&
+4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 - 0.7D1 / 0.5D1 * (&
+dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(&
+aa ** 2)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) +&
+((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 / 0.5D1&
+ * dble(EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2) / 0.2D1&
+) * t ** 3 / (-dble(EEY * nu ** 2) + EE) / dble(aa ** 2) / dble(bb&
+) / 0.12D2
+
+ke(10,12) = -(((0.7D1 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb&
+** 2) + dble(aa ** 2 * EEY)) * EE - 0.14D2 / 0.5D1 * dble(EEY) *&
+dble(GXY) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((0.7D1 / 0.10D2&
+ * EE ** 2 * dble(bb ** 2) + (0.7D1 / 0.10D2 * dble(EEY) * dble(&
+bb ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY))) * EE - dble(&
+4 * EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 - 0.7D1 / 0.5D1 * dble(&
+bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY&
+* nu ** 2))) * c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) + dble(bb&
+** 2) * ((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1&
+ / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)) / 0.2D1) * t **&
+3 / (-dble(EEY * nu ** 2) + EE) / dble(bb ** 2) / dble(aa) / 0.12D2
+
+ke(11,1) = ((0.14D2 / 0.5D1 * (dble(-nu * EEY - 2 * GXY) * EE + dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa ** 2) + EE ** 2 * dble(bb **&
+ 2)) * c ** 4 + 0.2D1 * dble(bb) * dble(aa) * s * (EE ** 2 + 0.2D1&
+ * dble(-nu * EEY - 2 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)&
+) * c ** 3 + ((-0.7D1 / 0.5D1 * EE * (EE + dble(EEY)) * dble(aa **&
+2) + 0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(&
+2 * EEY * GXY * nu ** 2))) * s ** 2 + 0.14D2 / 0.5D1 * (dble(nu&
+* EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa **&
+ 2)) * c ** 2 - 0.2D1 * dble(bb) * (EE * dble(EEY) * s ** 2 + dble(&
+-nu * EEY - 2 * GXY) * EE + dble(2 * EEY * GXY * nu ** 2)) * dble(&
+aa) * s * c + EE * dble(EEY) * s ** 4 * dble(bb ** 2) - ((dble(nu&
+ * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 / 0.5D1 * dble(&
+EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2)) * t ** 3 / (-dble(&
+EEY * nu ** 2) + EE) / dble(aa ** 2) / dble(bb) / 0.24D2
+
+ke(11,2) = t ** 3 * ((0.16D2 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(nu ** 2) + EE ** 2 * dble(bb ** 2) - 0.16D2 / 0.5D1&
+ * EE * dble(GXY) * dble(aa ** 2)) * c ** 4 + 0.2D1 * ((-0.2D1&
+/ 0.5D1 * EE ** 2 * dble(aa ** 2) + (0.4D1 / 0.5D1 * (dble(nu) - 0.1D1&
+ / 0.2D1) * dble(EEY) * dble(aa ** 2) + dble((nu * EEY + 2 * GXY&
+) * bb ** 2)) * EE - dble(2 * EEY * GXY * bb ** 2 * nu ** 2)) *&
+s ** 2 + 0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY *&
+nu ** 2) + EE)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2)&
+- 0.4D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu **&
+2) + EE)) / (-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.18D2
+
+ke(11,3) = t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1&
++ 2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2&
+- 4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (&
+-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(11,4) = -t ** 3 * ((-0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2)&
+* (-dble(EEY * nu ** 2) + EE) + EE ** 2 * dble(bb ** 2)) * c ** 4&
++ 0.2D1 * dble(aa) * s * dble(bb) * (EE ** 2 + dble(-2 * nu * EEY&
+- 4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * c ** 3 + ((-0.2D1&
+ / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE * dble(aa ** 2)&
++ 0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2&
+* EEY * GXY * nu ** 2))) * s ** 2 + 0.8D1 / 0.5D1 * dble(GXY) * dble(&
+aa ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2 - 0.2D1 * dble(&
+bb) * (EE * dble(EEY) * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE&
++ dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * c + EE * dble(EEY&
+) * s ** 4 * dble(bb ** 2) - 0.2D1 / 0.5D1 * dble(GXY) * dble(aa&
+** 2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY * nu ** 2) + EE)&
+/ dble(aa ** 2) / dble(bb) / 0.24D2
+
+ke(11,5) = ((0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY&
+ * nu ** 2) + EE) + EE ** 2 * dble(bb ** 2)) * c ** 4 + 0.3D1 * dble(&
+aa) * s * dble(bb) * (EE ** 2 + dble(-2 * nu * EEY - 4 * GXY)&
+* EE + dble(4 * EEY * GXY * nu ** 2)) * c ** 3 + ((0.2D1 / 0.5D1 *&
+(EE + dble((-2 * nu + 1) * EEY)) * EE * dble(aa ** 2) + 0.2D1 * dble(bb&
+ ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY&
+* nu ** 2))) * s ** 2 - 0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2)&
+* (-dble(EEY * nu ** 2) + EE)) * c ** 2 - 0.3D1 * dble(bb) * (EE&
+* dble(EEY) * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(2 * EEY&
+ * GXY * nu ** 2)) * dble(aa) * s * c + EE * dble(EEY) * s ** 4&
+* dble(bb ** 2) + 0.2D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(&
+EEY * nu ** 2) + EE)) * t ** 3 / (-dble(EEY * nu ** 2) + EE) /&
+dble(aa) / dble(bb) / 0.36D2
+
+ke(11,6) = -t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1&
++ 2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2&
+- 4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa -&
+bb) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(&
+EEY) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (&
+dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) /&
+(-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(11,7) = -t ** 3 * ((-0.4D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(nu ** 2) + EE ** 2 * dble(bb ** 2) + 0.4D1 / 0.5D1&
+ * EE * dble(GXY) * dble(aa ** 2)) * c ** 4 + ((EE ** 2 * dble(&
+aa ** 2) / 0.5D1 + (-0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) *&
+dble(EEY) * dble(aa ** 2) + dble(2 * (nu * EEY + 2 * GXY) * bb **&
+2)) * EE - dble(4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 - 0.4D1&
+ / 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE&
+)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) + dble(GXY)&
+* dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY&
+ * nu ** 2) + EE) / dble(aa ** 2) / dble(bb) / 0.12D2
+ke(11,8) = t ** 3 * ((0.4D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(&
+aa ** 2) * dble(nu ** 2) + EE ** 2 * dble(bb ** 2) - 0.4D1 / 0.5D1&
+ * EE * dble(GXY) * dble(aa ** 2)) * c ** 4 + ((-EE ** 2 * dble(aa&
+ ** 2) / 0.5D1 + (0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(aa ** 2) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2)&
+) * EE - dble(4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 + 0.4D1&
+/ 0.5D1 * dble(GXY) * dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE)&
+) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) - dble(GXY) *&
+dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY&
+* nu ** 2) + EE) / dble(aa) / dble(bb) / 0.18D2
+ke(11,9) = t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1&
++ 2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2&
+- 4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (&
+-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+
+ke(11,10) = ((EE ** 2 * dble(bb ** 2) + 0.7D1 / 0.5D1 * dble(aa **&
+2) * dble(nu * EEY + 2 * GXY) * EE - 0.14D2 / 0.5D1 * dble(EEY) *&
+dble(GXY) * dble(aa ** 2) * dble(nu ** 2)) * c ** 4 + ((0.7D1 / 0.10D2&
+ * EE ** 2 * dble(aa ** 2) + (0.7D1 / 0.10D2 * dble(aa ** 2)&
+* dble(EEY) + dble(2 * (nu * EEY + 2 * GXY) * bb ** 2)) * EE - dble(&
+4 * EEY * GXY * bb ** 2 * nu ** 2)) * s ** 2 - 0.7D1 / 0.5D1 * (&
+dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(&
+aa ** 2)) * c ** 2 + EE * dble(EEY) * s ** 4 * dble(bb ** 2) +&
+((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1 / 0.5D1&
+ * dble(EEY) * dble(GXY) * dble(nu ** 2)) * dble(aa ** 2) / 0.2D1&
+) * t ** 3 / (-dble(EEY * nu ** 2) + EE) / dble(aa ** 2) / dble(bb&
+) / 0.12D2
+
+ke(11,11) = t ** 3 * ((0.8D1 / 0.5D1 * dble(GXY) * dble(aa ** 2) *&
+(-dble(EEY * nu ** 2) + EE) + EE ** 2 * dble(bb ** 2)) * c ** 4 +&
+0.3D1 / 0.4D1 * dble(aa) * s * dble(bb) * (EE ** 2 + dble(-2 * nu&
+* EEY - 4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * c ** 3 +&
+((0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE * dble(aa&
+** 2) + 0.2D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE -&
+dble(2 * EEY * GXY * nu ** 2))) * s ** 2 - 0.8D1 / 0.5D1 * dble(GXY&
+) * dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2 - 0.3D1&
+/ 0.4D1 * dble(bb) * (EE * dble(EEY) * s ** 2 + dble(-nu * EEY -&
+2 * GXY) * EE + dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * c&
++ EE * dble(EEY) * s ** 4 * dble(bb ** 2) + 0.2D1 / 0.5D1 * dble(GXY&
+) * dble(aa ** 2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY *&
+nu ** 2) + EE) / dble(aa) / dble(bb) / 0.9D1
+ke(11,12) = -t ** 3 * (0.12D2 * EE * dble(EEY) * c ** 4 * dble(aa)&
+* dble(bb) * dble(nu) + (EE ** 2 * dble(bb ** 2) + dble(((-1 + 2&
+* nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2 - 4&
+* GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb) *&
+(aa + bb))) * s * c ** 3 + 0.6D1 * dble(aa) * ((EE ** 2 + dble(EEY&
+ - 4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * s ** 2 - 0.2D1&
+ * EE * dble(EEY) * dble(nu)) * dble(bb) * c ** 2 + ((EE ** 2 * dble(&
+aa ** 2) - EE * dble(EEY) * dble(bb ** 2)) * s ** 2 - dble(aa&
++ bb) * dble(aa - bb) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 *&
+EEY * GXY * nu ** 2))) * s * c + 0.6D1 * EE * dble(EEY) * dble(aa)&
+* dble(bb) * dble(nu)) / (-dble(EEY * nu ** 2) + EE) / dble(aa) /&
+dble(bb) / 0.72D2
+ke(12,1) = t ** 3 * (((dble(aa ** 2 * EEY) + 0.4D1 / 0.5D1 * dble(&
+GXY) * dble(bb ** 2)) * EE - 0.4D1 / 0.5D1 * dble(EEY) * dble(GXY)&
+* dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((EE ** 2 * dble(bb **&
+ 2) / 0.5D1 + (-0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(bb ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY)))&
+* EE - dble(4 * EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 - 0.4D1 /&
+0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE))&
+* c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) + dble(GXY) * dble(bb&
+** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY * nu **&
+2) + EE) / dble(bb ** 2) / dble(aa) / 0.12D2
+ke(12,2) = t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1&
++ 2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2&
+- 4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (&
+-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(12,3) = t ** 3 * (((dble(aa ** 2 * EEY) - 0.4D1 / 0.5D1 * dble(&
+GXY) * dble(bb ** 2)) * EE + 0.4D1 / 0.5D1 * dble(EEY) * dble(GXY)&
+* dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((-EE ** 2 * dble(bb&
+** 2) / 0.5D1 + (0.2D1 / 0.5D1 * (dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) * dble(bb ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY)))&
+* EE - dble(4 * EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 + 0.4D1 /&
+0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE))&
+* c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) - dble(GXY) * dble(bb&
+** 2) * (-dble(EEY * nu ** 2) + EE) / 0.5D1) / (-dble(EEY * nu **&
+2) + EE) / dble(aa) / dble(bb) / 0.18D2
+ke(12,4) = ((-0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY&
+ * nu ** 2) + EE) + dble(aa ** 2) * EE * dble(EEY)) * c ** 4 + 0.4D1&
+ * dble(aa) * s * (((dble(nu) - 0.1D1 / 0.2D1) * dble(EEY) + dble(&
+2 * GXY)) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(bb) * c&
+** 3 + ((-0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY)) * EE *&
+dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY) * EE - dble(2 *&
+EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2 + 0.8D1 / 0.5D1 *&
+dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) * c ** 2&
++ 0.2D1 * (EE ** 2 * s ** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa) * s * dble(bb) * c + EE **&
+2 * s ** 4 * dble(aa ** 2) - 0.2D1 / 0.5D1 * dble(GXY) * dble(bb&
+** 2) * (-dble(EEY * nu ** 2) + EE)) * t ** 3 / (-dble(EEY * nu **&
+2) + EE) / dble(bb ** 2) / dble(aa) / 0.24D2
+ke(12,5) = -t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1&
++ 2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2&
+- 4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa -&
+bb) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(&
+EEY) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (&
+dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) /&
+(-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+
+ke(12,6) = t ** 3 * ((0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) *&
+(-dble(EEY * nu ** 2) + EE) + dble(aa ** 2) * EE * dble(EEY)) * c&
+** 4 + 0.6D1 * dble(aa) * s * (((dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) + dble(2 * GXY)) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(&
+bb) * c ** 3 + ((0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY))&
+* EE * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY) * EE - dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2 - 0.8D1 /&
+0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) *&
+c ** 2 + 0.3D1 * (EE ** 2 * s ** 2 + dble(-nu * EEY - 2 * GXY) *&
+EE + dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * dble(bb) * c&
++ EE ** 2 * s ** 4 * dble(aa ** 2) + 0.2D1 / 0.5D1 * dble(GXY) * dble(bb&
+ ** 2) * (-dble(EEY * nu ** 2) + EE)) / (-dble(EEY * nu ** 2&
+) + EE) / dble(aa) / dble(bb) / 0.36D2
+
+ke(12,7) = -t ** 3 * ((0.14D2 / 0.5D1 * (dble(-nu * EEY - 2 * GXY)&
+* EE + dble(2 * EEY * GXY * nu ** 2)) * dble(bb ** 2) + dble(aa **&
+ 2) * EE * dble(EEY)) * c ** 4 + 0.4D1 * dble(aa) * s * (((dble(nu&
+) - 0.1D1 / 0.2D1) * dble(EEY) + dble(2 * GXY)) * EE - dble(2 * EEY&
+ * GXY * nu ** 2)) * dble(bb) * c ** 3 + ((-0.7D1 / 0.5D1 * EE *&
+(EE + dble(EEY)) * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY&
+) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s **&
+2 + 0.14D2 / 0.5D1 * dble(bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE&
+ - dble(2 * EEY * GXY * nu ** 2))) * c ** 2 + 0.2D1 * (EE ** 2 *&
+s ** 2 + dble(-nu * EEY - 2 * GXY) * EE + dble(2 * EEY * GXY * nu&
+** 2)) * dble(aa) * s * dble(bb) * c + EE ** 2 * s ** 4 * dble(aa&
+** 2) - dble(bb ** 2) * ((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY&
+)) * EE - 0.2D1 / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)))&
+/ (-dble(EEY * nu ** 2) + EE) / dble(bb ** 2) / dble(aa) / 0.24D2
+ke(12,8) = t ** 3 * c * s * ((EE ** 2 * dble(bb ** 2) + dble(((-1&
++ 2 * nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2&
+- 4 * GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb&
+) * (aa + bb))) * c ** 2 + (EE ** 2 * dble(aa ** 2) - EE * dble(EEY&
+) * dble(bb ** 2)) * s ** 2 - dble(aa + bb) * dble(aa - bb) * (dble(&
+nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY * nu ** 2))) / (&
+-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.72D2
+ke(12,9) = t ** 3 * (((dble(aa ** 2 * EEY) - 0.16D2 / 0.5D1 * dble(&
+GXY) * dble(bb ** 2)) * EE + 0.16D2 / 0.5D1 * dble(EEY) * dble(GXY&
+) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + 0.2D1 * ((-0.2D1 /&
+0.5D1 * EE ** 2 * dble(bb ** 2) + (0.4D1 / 0.5D1 * (dble(nu) - 0.1D1&
+ / 0.2D1) * dble(EEY) * dble(bb ** 2) + dble(aa ** 2 * (nu * EEY&
++ 2 * GXY))) * EE - dble(2 * EEY * GXY * aa ** 2 * nu ** 2)) * s&
+** 2 + 0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu&
+** 2) + EE)) * c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) - 0.4D1&
+/ 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE))&
+/ (-dble(EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.18D2
+
+ke(12,10) = -(((0.7D1 / 0.5D1 * dble(nu * EEY + 2 * GXY) * dble(bb&
+** 2) + dble(aa ** 2 * EEY)) * EE - 0.14D2 / 0.5D1 * dble(EEY) *&
+dble(GXY) * dble(bb ** 2) * dble(nu ** 2)) * c ** 4 + ((0.7D1 / 0.10D2&
+ * EE ** 2 * dble(bb ** 2) + (0.7D1 / 0.10D2 * dble(EEY) * dble(&
+bb ** 2) + dble(2 * aa ** 2 * (nu * EEY + 2 * GXY))) * EE - dble(&
+4 * EEY * GXY * aa ** 2 * nu ** 2)) * s ** 2 - 0.7D1 / 0.5D1 * dble(&
+bb ** 2) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 * EEY * GXY&
+* nu ** 2))) * c ** 2 + EE ** 2 * s ** 4 * dble(aa ** 2) + dble(bb&
+** 2) * ((dble(nu * EEY) + 0.2D1 / 0.5D1 * dble(GXY)) * EE - 0.2D1&
+ / 0.5D1 * dble(EEY) * dble(GXY) * dble(nu ** 2)) / 0.2D1) * t **&
+3 / (-dble(EEY * nu ** 2) + EE) / dble(bb ** 2) / dble(aa) / 0.12D2
+
+ke(12,11) = -t ** 3 * (0.12D2 * EE * dble(EEY) * c ** 4 * dble(aa)&
+* dble(bb) * dble(nu) + (EE ** 2 * dble(bb ** 2) + dble(((-1 + 2&
+* nu) * aa ** 2 - 2 * bb ** 2 * nu) * EEY + 4 * GXY * aa ** 2 - 4&
+* GXY * bb ** 2) * EE - dble(4 * nu ** 2 * EEY * GXY * (aa - bb) *&
+(aa + bb))) * s * c ** 3 + 0.6D1 * dble(aa) * ((EE ** 2 + dble(EEY&
+ - 4 * GXY) * EE + dble(4 * EEY * GXY * nu ** 2)) * s ** 2 - 0.2D1&
+ * EE * dble(EEY) * dble(nu)) * dble(bb) * c ** 2 + ((EE ** 2 * dble(&
+aa ** 2) - EE * dble(EEY) * dble(bb ** 2)) * s ** 2 - dble(aa&
++ bb) * dble(aa - bb) * (dble(nu * EEY + 2 * GXY) * EE - dble(2 *&
+EEY * GXY * nu ** 2))) * s * c + 0.6D1 * EE * dble(EEY) * dble(aa)&
+* dble(bb) * dble(nu)) / (-dble(EEY * nu ** 2) + EE) / dble(aa) /&
+dble(bb) / 0.72D2
+
+ke(12,12) = ((0.8D1 / 0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY&
+ * nu ** 2) + EE) + dble(aa ** 2) * EE * dble(EEY)) * c ** 4 + 0.3D1&
+ / 0.2D1 * dble(aa) * s * (((dble(nu) - 0.1D1 / 0.2D1) * dble(&
+EEY) + dble(2 * GXY)) * EE - dble(2 * EEY * GXY * nu ** 2)) * dble(&
+bb) * c ** 3 + ((0.2D1 / 0.5D1 * (EE + dble((-2 * nu + 1) * EEY))&
+* EE * dble(bb ** 2) + 0.2D1 * (dble(nu * EEY + 2 * GXY) * EE - dble(&
+2 * EEY * GXY * nu ** 2)) * dble(aa ** 2)) * s ** 2 - 0.8D1 /&
+0.5D1 * dble(GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) *&
+c ** 2 + 0.3D1 / 0.4D1 * (EE ** 2 * s ** 2 + dble(-nu * EEY - 2 *&
+GXY) * EE + dble(2 * EEY * GXY * nu ** 2)) * dble(aa) * s * dble(&
+bb) * c + EE ** 2 * s ** 4 * dble(aa ** 2) + 0.2D1 / 0.5D1 * dble(&
+GXY) * dble(bb ** 2) * (-dble(EEY * nu ** 2) + EE)) * t ** 3 / (-dble(&
+EEY * nu ** 2) + EE) / dble(aa) / dble(bb) / 0.9D1
 
 
 
